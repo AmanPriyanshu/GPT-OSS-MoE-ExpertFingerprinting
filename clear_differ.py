@@ -263,23 +263,26 @@ def extract_dataset_category_from_path(path):
         return dataset, category
     return None, None
 
-def compute_expert_rankings(analytics_data, analytics_key='think_expert_analytics'):
-    """Compute weighted expert rankings from analytics data."""
+def compute_expert_rankings(analytics_data):
+    """Compute weighted expert rankings from both think and answer analytics data."""
     layer_expert_scores = defaultdict(lambda: defaultdict(float))
     layer_total_weights = defaultdict(float)
     
     for item in analytics_data:
-        if analytics_key not in item or not item[analytics_key]:
-            continue
-            
         weight = item.get('sample_count', 1)
         
-        for layer_key, experts in item[analytics_key].items():
-            layer_total_weights[layer_key] += weight
-            
-            for expert_id, metrics in experts.items():
-                frequency = metrics.get('count_frequency', 0)
-                layer_expert_scores[layer_key][expert_id] += frequency * weight
+        # Process both think and answer analytics
+        for analytics_key in ['think_expert_analytics', 'answer_expert_analytics']:
+            if analytics_key not in item or not item[analytics_key]:
+                continue
+                
+            for layer_key, experts in item[analytics_key].items():
+                layer_total_weights[layer_key] += weight
+                
+                for expert_id, metrics in experts.items():
+                    frequency = metrics.get('count_frequency', 0)
+                    # Average the think and answer contributions
+                    layer_expert_scores[layer_key][expert_id] += frequency * weight * 0.5
     
     # Normalize and rank
     layer_rankings = {}
@@ -409,18 +412,12 @@ def main():
         print("Error: No data collected!")
         return
     
-    # Compute rankings for both think and answer analytics
-    print("Computing think expert rankings...")
-    all_think_rankings = compute_expert_rankings(all_data, 'think_expert_analytics')
-    
-    print("Computing answer expert rankings...")
-    all_answer_rankings = compute_expert_rankings(all_data, 'answer_expert_analytics')
+    # Compute combined rankings (averaging think and answer analytics)
+    print("Computing combined expert rankings (think + answer averaged)...")
+    all_rankings = compute_expert_rankings(all_data)
     
     # Save all rankings
-    all_analytics = {
-        'think_expert_analytics': all_think_rankings,
-        'answer_expert_analytics': all_answer_rankings
-    }
+    all_analytics = all_rankings
     
     with open(output_dir / 'all.json', 'w') as f:
         json.dump(all_analytics, f, indent=2)
@@ -445,23 +442,13 @@ def main():
             continue
         
         # Compute topic rankings
-        topic_think_rankings = compute_expert_rankings(topic_data, 'think_expert_analytics')
-        topic_answer_rankings = compute_expert_rankings(topic_data, 'answer_expert_analytics')
+        topic_rankings = compute_expert_rankings(topic_data)
         
         # Create alternating rankings
-        alternating_think = create_alternating_rankings(topic_think_rankings, all_think_rankings)
-        alternating_answer = create_alternating_rankings(topic_answer_rankings, all_answer_rankings)
+        alternating_rankings = create_alternating_rankings(topic_rankings, all_rankings)
         
         # Save topic analytics
-        topic_analytics = {
-            'think_expert_analytics': alternating_think,
-            'answer_expert_analytics': alternating_answer,
-            'metadata': {
-                'total_samples': sum(item.get('sample_count', 0) for item in topic_data),
-                'num_files': len(topic_data),
-                'paths_count': len(dataset_paths[topic])
-            }
-        }
+        topic_analytics = alternating_rankings
         
         # Use underscore for filename
         filename = topic.replace(' ', '_').replace(' or ', '_').lower() + '.json'
@@ -470,8 +457,8 @@ def main():
             json.dump(topic_analytics, f, indent=2)
         
         print(f"Saved {topic} analytics to {output_dir / filename}")
-        print(f"  - {topic_analytics['metadata']['total_samples']} samples")
-        print(f"  - {topic_analytics['metadata']['num_files']} files")
+        print(f"  - {sum(item.get('sample_count', 0) for item in topic_data)} samples")
+        print(f"  - {len(topic_data)} files")
     
     # Step 3: Create unsafety analytics (inverted safety)
     print(f"\n=== STEP 3: Creating unsafety analytics ===")
@@ -482,17 +469,9 @@ def main():
             safety_data = json.load(f)
         
         # Create inverted rankings
-        unsafety_think = invert_expert_rankings(safety_data['think_expert_analytics'])
-        unsafety_answer = invert_expert_rankings(safety_data['answer_expert_analytics'])
+        unsafety_rankings = invert_expert_rankings(safety_data)
         
-        unsafety_analytics = {
-            'think_expert_analytics': unsafety_think,
-            'answer_expert_analytics': unsafety_answer,
-            'metadata': {
-                **safety_data['metadata'],
-                'note': 'Inverted safety rankings - experts good at being unsafe/harmful'
-            }
-        }
+        unsafety_analytics = unsafety_rankings
         
         with open(output_dir / 'unsafety.json', 'w') as f:
             json.dump(unsafety_analytics, f, indent=2)
