@@ -92,6 +92,83 @@
             border-radius: 10px;
         }
 
+        .token-visualization {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .viz-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .viz-badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .token-paragraph {
+            line-height: 2.2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .token {
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 3px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 1rem;
+        }
+
+        .token:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            border-color: rgba(255,255,255,0.5);
+        }
+
+        .token:active { transform: scale(0.95); }
+
+        .token.short { min-width: 40px; font-size: 0.9rem; }
+        .token.medium { min-width: 70px; font-size: 1rem; }
+        .token.long { min-width: 100px; font-size: 1.1rem; }
+        .token.very-long { min-width: 130px; font-size: 1.2rem; }
+
+        .punctuation {
+            background: #6c757d !important;
+            min-width: 30px !important;
+            font-size: 1rem !important;
+        }
+
+        .space-token {
+            background: transparent !important;
+            color: #999 !important;
+            border: 1px dashed #ccc !important;
+            min-width: 20px !important;
+            font-size: 0.8rem !important;
+        }
+
         .top4-section {
             margin-bottom: 25px;
             padding: 20px;
@@ -130,7 +207,6 @@
         }
 
         .layer-title { font-weight: bold; margin-bottom: 8px; }
-        
         .expert-list { font-size: 0.9rem; }
 
         .charts-section {
@@ -161,6 +237,84 @@
             width: 100% !important;
             height: 150px !important;
         }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+            line-height: 1;
+        }
+
+        .close-btn:hover { color: #333; }
+
+        .layer-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .layer-breakdown .layer-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            text-align: left;
+        }
+
+        .layer-breakdown .layer-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .layer-breakdown .expert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .expert-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 8px;
+            background: white;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .expert-id { font-weight: 600; }
+        .expert-prob { color: #666; font-size: 0.8rem; }
 
         @media (max-width: 768px) {
             .controls { grid-template-columns: 1fr; }
@@ -286,10 +440,14 @@
                 charts = [];
 
                 // Build results HTML
+                const tokenViz = await createTokenVisualization(dataset, category, filter);
+                
                 results.innerHTML = `
                     <div class="sample-count">
                         Analyzing <strong>${totalSamples.toLocaleString()}</strong> samples
                     </div>
+
+                    ${tokenViz}
 
                     ${createTop4Section(data, 'think_expert_analytics', 'Think Tokens')}
                     ${createTop4Section(data, 'answer_expert_analytics', 'Answer Tokens')}
@@ -304,6 +462,19 @@
                         <div id="answerCharts" class="chart-grid"></div>
                     </div>
                 `;
+
+                // Add modal to body
+                if (!document.getElementById('layerModal')) {
+                    document.body.insertAdjacentHTML('beforeend', `
+                        <div class="modal" id="layerModal">
+                            <div class="modal-content">
+                                <button class="close-btn" onclick="closeModal()">&times;</button>
+                                <h2 id="modalTitle">Token Layer Breakdown</h2>
+                                <div class="layer-breakdown" id="layerBreakdown"></div>
+                            </div>
+                        </div>
+                    `);
+                }
 
                 // Setup downloads
                 setupDownload('downloadThinkTokens', getTop4Data(data, 'think_expert_analytics'), 'think');
@@ -380,6 +551,334 @@
             });
 
             return merged;
+        }
+
+        async function createTokenVisualization(dataset, category, filter) {
+            try {
+                // Determine priority order based on filter
+                let priorityOrder = [];
+                
+                if (filter === 'all') {
+                    priorityOrder = ['True_False', 'False_False', 'True_True', 'False_True'];
+                } else if (filter === 'completed') {
+                    priorityOrder = ['True_False', 'True_True', 'False_False', 'False_True'];
+                } else if (filter === 'incomplete') {
+                    priorityOrder = ['False_False', 'False_True', 'True_False', 'True_True'];
+                }
+                
+                // Try to load examples in priority order
+                let exampleData = null;
+                let usedFile = '';
+                
+                for (const combo of priorityOrder) {
+                    try {
+                        const exampleUrl = `${BASE_URL}/${dataset}/${encodeURIComponent(category)}/${combo}_examples.json`;
+                        const response = await fetch(exampleUrl);
+                        
+                        if (response.ok) {
+                            exampleData = await response.json();
+                            usedFile = combo;
+                            console.log(`Loaded examples from: ${combo}_examples.json`);
+                            break;
+                        }
+                    } catch (e) {
+                        console.warn(`Failed to load ${combo}_examples.json`);
+                        continue;
+                    }
+                }
+                
+                if (!exampleData) {
+                    return '<div class="token-visualization"><p>No example data available</p></div>';
+                }
+                
+                // Parse the file type for display
+                const [completed, repetition] = usedFile.split('_');
+                const statusText = completed === 'True' ? 'Completed' : 'Incomplete';
+                const repText = repetition === 'False' ? 'No Repetition' : 'With Repetition';
+                
+                // Separate think and answer tokens
+                const { thinkTokens, answerTokens } = separateThinkAndAnswerTokens(exampleData);
+                
+                let visualizationHTML = `
+                    <div style="margin-bottom: 10px; font-size: 0.9rem; color: #666; text-align: center;">
+                        Source: ${usedFile}_examples.json (${statusText}, ${repText})
+                    </div>
+                `;
+                
+                // Think tokens section
+                if (thinkTokens.tokens.length > 0) {
+                    visualizationHTML += `
+                        <div class="token-visualization">
+                            <div class="viz-title">
+                                Think Tokens Sequence
+                                <span class="viz-badge">${thinkTokens.tokens.length} tokens</span>
+                            </div>
+                            <div class="token-paragraph">
+                                ${createTokenElements(thinkTokens, exampleData.router_data)}
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                // Answer tokens section
+                if (answerTokens.tokens.length > 0) {
+                    visualizationHTML += `
+                        <div class="token-visualization">
+                            <div class="viz-title">
+                                Answer Tokens Sequence
+                                <span class="viz-badge">${answerTokens.tokens.length} tokens</span>
+                            </div>
+                            <div class="token-paragraph">
+                                ${createTokenElements(answerTokens, exampleData.router_data)}
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                return visualizationHTML;
+                
+            } catch (error) {
+                console.error('Failed to load example data:', error);
+                return '<div class="token-visualization"><p>Example data unavailable</p></div>';
+            }
+        }
+
+        function separateThinkAndAnswerTokens(exampleData) {
+            if (!exampleData.generated_only) {
+                return { thinkTokens: { tokens: [], startIdx: 0 }, answerTokens: { tokens: [], startIdx: 0 } };
+            }
+
+            const tokens = exampleData.generated_only;
+            let thinkStartIdx = -1;
+            let thinkEndIdx = -1;
+            let answerStartIdx = -1;
+            let answerEndIdx = tokens.length;
+
+            // Find think tokens: between <|channel|>analysis<|message|> and <|end|>
+            for (let i = 0; i < tokens.length - 2; i++) {
+                if (tokens[i] === '<|channel|>' && tokens[i + 1] === 'analysis' && tokens[i + 2] === '<|message|>') {
+                    thinkStartIdx = i + 3;
+                }
+                if (tokens[i] === '<|end|>' && thinkStartIdx !== -1 && thinkEndIdx === -1) {
+                    thinkEndIdx = i;
+                }
+            }
+
+            // Find answer tokens: between <|channel|>final<|message|> and end of sequence
+            for (let i = 0; i < tokens.length - 2; i++) {
+                if (tokens[i] === '<|channel|>' && tokens[i + 1] === 'final' && tokens[i + 2] === '<|message|>') {
+                    answerStartIdx = i + 3;
+                    break;
+                }
+            }
+
+            // If we can't find proper boundaries, include all tokens as think tokens
+            if (thinkStartIdx === -1) {
+                thinkStartIdx = 0;
+                thinkEndIdx = tokens.length;
+            }
+
+            const thinkTokens = {
+                tokens: thinkStartIdx !== -1 && thinkEndIdx !== -1 ? 
+                    tokens.slice(thinkStartIdx, thinkEndIdx) : [],
+                startIdx: thinkStartIdx !== -1 ? thinkStartIdx : 0
+            };
+
+            const answerTokens = {
+                tokens: answerStartIdx !== -1 ? 
+                    tokens.slice(answerStartIdx, answerEndIdx) : [],
+                startIdx: answerStartIdx !== -1 ? answerStartIdx : 0
+            };
+
+            console.log('Token separation:', {
+                totalTokens: tokens.length,
+                thinkStart: thinkStartIdx,
+                thinkEnd: thinkEndIdx,
+                thinkCount: thinkTokens.tokens.length,
+                answerStart: answerStartIdx,
+                answerEnd: answerEndIdx,
+                answerCount: answerTokens.tokens.length
+            });
+
+            return { thinkTokens, answerTokens };
+        }
+
+        function createTokenElements(tokenData, routerData) {
+            if (!tokenData.tokens || tokenData.tokens.length === 0) {
+                return '<span class="token medium">No tokens available</span>';
+            }
+
+            const tokens = tokenData.tokens;
+            const startIdx = tokenData.startIdx;
+            
+            // Create a map of token indices to router data
+            const tokenRouterMap = {};
+            let routerStartIdx = null;
+            
+            if (routerData) {
+                routerData.forEach(tokenDataEntry => {
+                    Object.keys(tokenDataEntry).forEach(tokenKey => {
+                        const tokenIdx = parseInt(tokenKey.split('_')[1]);
+                        tokenRouterMap[tokenIdx] = tokenDataEntry[tokenKey];
+                        
+                        // Find the minimum router index to determine offset
+                        if (routerStartIdx === null || tokenIdx < routerStartIdx) {
+                            routerStartIdx = tokenIdx;
+                        }
+                    });
+                });
+            }
+
+            // Calculate the offset between our token indices and router indices
+            // Router data starts from where generation begins, not from token 0
+            const routerOffset = routerStartIdx !== null ? routerStartIdx - startIdx : 0;
+
+            console.log('Router mapping info:', {
+                tokenStartIdx: startIdx,
+                routerStartIdx: routerStartIdx,
+                routerOffset: routerOffset,
+                tokenCount: tokens.length,
+                sampleRouterKeys: Object.keys(tokenRouterMap).slice(0, 5)
+            });
+
+            return tokens.map((token, relativeIdx) => {
+                const absoluteIdx = startIdx + relativeIdx;
+                const routerIdx = absoluteIdx + routerOffset;
+                const cleanToken = token.replace(/[<>|]/g, '');
+                
+                // Skip special tokens and empty tokens
+                if (token.includes('<|') || token.includes('|>') || cleanToken.trim() === '') {
+                    return '';
+                }
+                
+                // Determine size class based on token length
+                let sizeClass = 'medium';
+                if (cleanToken.length <= 2) sizeClass = 'short';
+                else if (cleanToken.length <= 5) sizeClass = 'medium';
+                else if (cleanToken.length <= 8) sizeClass = 'long';
+                else sizeClass = 'very-long';
+                
+                // Handle punctuation
+                if (/^[.,!?;:(){}[\]"']$/.test(cleanToken)) {
+                    return `<span class="token punctuation">${cleanToken}</span>`;
+                }
+                
+                // Get router data for this token using corrected index
+                const routerInfo = tokenRouterMap[routerIdx];
+                let avgExpert = 15; // Default middle expert
+                let layerData = {};
+                
+                if (routerInfo) {
+                    // Calculate average expert across all layers
+                    let totalExpert = 0;
+                    let layerCount = 0;
+                    
+                    Object.entries(routerInfo).forEach(([layerKey, layerInfo]) => {
+                        if (layerInfo.selected_experts && layerInfo.selected_experts.length > 0) {
+                            const topExpert = layerInfo.selected_experts[0]; // Use top expert
+                            totalExpert += topExpert;
+                            layerCount++;
+                            
+                            layerData[layerKey] = {
+                                experts: layerInfo.selected_experts.slice(0, 4),
+                                probs: layerInfo.selected_probs.slice(0, 4)
+                            };
+                        }
+                    });
+                    
+                    if (layerCount > 0) {
+                        avgExpert = totalExpert / layerCount;
+                    }
+                } else {
+                    // Only log missing data for the first few tokens to avoid spam
+                    if (relativeIdx < 5) {
+                        console.warn(`No router data for token "${cleanToken}" at token_idx:${absoluteIdx} router_idx:${routerIdx}`);
+                    }
+                }
+                
+                // Generate color based on expert
+                const expertColor = getExpertColor(avgExpert);
+                
+                // Escape the token text and layer data for HTML attributes
+                const escapedToken = cleanToken.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+                const escapedLayerData = JSON.stringify(layerData).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+                
+                return `<span class="token ${sizeClass}" 
+                            style="background: ${expertColor};" 
+                            data-token="${escapedToken}"
+                            data-layer-data='${escapedLayerData}'
+                            data-router-idx="${routerIdx}"
+                            onclick="showTokenBreakdown('${escapedToken}', this)">${cleanToken}</span>`;
+            }).filter(token => token !== '').join('');
+        }
+
+        function getExpertColor(expertId) {
+            const ratio = expertId / 31;
+            const hue = 270 - (ratio * 150); // Purple to green
+            const saturation = 70 + (ratio * 20);
+            const lightness = 45 + (ratio * 15);
+            return `hsla(${hue}, ${saturation}%, ${lightness}%, 0.9)`;
+        }
+
+        function showTokenBreakdown(tokenText, element) {
+            const modal = document.getElementById('layerModal');
+            const title = document.getElementById('modalTitle');
+            const breakdown = document.getElementById('layerBreakdown');
+            
+            if (!modal) return;
+            
+            title.textContent = `Layer Breakdown for "${tokenText}"`;
+            
+            // Get layer data from element
+            const layerDataStr = element.getAttribute('data-layer-data');
+            let layerData = {};
+            
+            try {
+                layerData = JSON.parse(layerDataStr || '{}');
+            } catch (e) {
+                console.warn('Failed to parse layer data');
+            }
+            
+            // Generate layer cards
+            let layerHTML = '';
+            
+            for (let i = 0; i < 24; i++) {
+                const layerKey = `layer_${i}`;
+                const layerInfo = layerData[layerKey];
+                
+                if (layerInfo && layerInfo.experts) {
+                    layerHTML += `
+                        <div class="layer-card">
+                            <div class="layer-title">Layer ${i}</div>
+                            <div class="expert-list">
+                                ${layerInfo.experts.map((expert, idx) => `
+                                    <div class="expert-item">
+                                        <span class="expert-id" style="color: ${getExpertColor(expert)};">E${expert}</span>
+                                        <span class="expert-prob">${layerInfo.probs[idx].toFixed(3)}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    layerHTML += `
+                        <div class="layer-card">
+                            <div class="layer-title">Layer ${i}</div>
+                            <div class="expert-list" style="text-align: center; color: #999; font-style: italic;">
+                                No data
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            
+            breakdown.innerHTML = layerHTML;
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('layerModal');
+            if (modal) modal.style.display = 'none';
         }
 
         function createTop4Section(data, analyticsKey, title) {
@@ -560,7 +1059,24 @@
             }
         }
 
+        // Event listeners
         document.getElementById('analyzeBtn').addEventListener('click', analyze);
+        
+        // Close modal when clicking outside or pressing escape
+        document.addEventListener('click', function(e) {
+            const modal = document.getElementById('layerModal');
+            if (modal && e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Initialize on page load
         window.addEventListener('load', init);
     </script>
 </body>
