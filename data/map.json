@@ -1,0 +1,3418 @@
+{
+  "gpqa_diamond": {
+    "Physics (general)": {
+      "False_False": {
+        "sample_count": 13,
+        "file_path": "gpqa_diamond/Physics (general)/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 6,
+        "file_path": "gpqa_diamond/Physics (general)/True_False.json"
+      }
+    },
+    "Organic Chemistry": {
+      "False_False": {
+        "sample_count": 71,
+        "file_path": "gpqa_diamond/Organic Chemistry/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 1,
+        "file_path": "gpqa_diamond/Organic Chemistry/True_False.json"
+      }
+    },
+    "Quantum Mechanics": {
+      "False_False": {
+        "sample_count": 19,
+        "file_path": "gpqa_diamond/Quantum Mechanics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 6,
+        "file_path": "gpqa_diamond/Quantum Mechanics/True_False.json"
+      }
+    },
+    "Electromagnetism and Photonics": {
+      "True_False": {
+        "sample_count": 2,
+        "file_path": "gpqa_diamond/Electromagnetism and Photonics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 4,
+        "file_path": "gpqa_diamond/Electromagnetism and Photonics/False_False.json"
+      }
+    },
+    "High-energy particle physics": {
+      "False_False": {
+        "sample_count": 7,
+        "file_path": "gpqa_diamond/High-energy particle physics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 7,
+        "file_path": "gpqa_diamond/High-energy particle physics/True_False.json"
+      }
+    },
+    "Genetics": {
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "gpqa_diamond/Genetics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 1,
+        "file_path": "gpqa_diamond/Genetics/True_False.json"
+      }
+    },
+    "Astrophysics": {
+      "True_False": {
+        "sample_count": 2,
+        "file_path": "gpqa_diamond/Astrophysics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 11,
+        "file_path": "gpqa_diamond/Astrophysics/False_False.json"
+      }
+    },
+    "Molecular Biology": {
+      "True_False": {
+        "sample_count": 7,
+        "file_path": "gpqa_diamond/Molecular Biology/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 7,
+        "file_path": "gpqa_diamond/Molecular Biology/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "gpqa_diamond/Molecular Biology/False_True.json"
+      }
+    },
+    "Chemistry (general)": {
+      "False_False": {
+        "sample_count": 16,
+        "file_path": "gpqa_diamond/Chemistry (general)/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "gpqa_diamond/Chemistry (general)/True_False.json"
+      }
+    },
+    "Relativistic Mechanics": {
+      "True_False": {
+        "sample_count": 2,
+        "file_path": "gpqa_diamond/Relativistic Mechanics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 5,
+        "file_path": "gpqa_diamond/Relativistic Mechanics/False_False.json"
+      }
+    },
+    "Inorganic Chemistry": {
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "gpqa_diamond/Inorganic Chemistry/False_False.json"
+      }
+    },
+    "Optics and Acoustics": {
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "gpqa_diamond/Optics and Acoustics/False_False.json"
+      }
+    },
+    "Condensed Matter Physics": {
+      "True_False": {
+        "sample_count": 1,
+        "file_path": "gpqa_diamond/Condensed Matter Physics/True_False.json"
+      }
+    }
+  },
+  "tulu3_persona_if": {
+    "instruction-following": {
+      "False_False": {
+        "sample_count": 4345,
+        "file_path": "tulu3_persona_if/instruction-following/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 1155,
+        "file_path": "tulu3_persona_if/instruction-following/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 346,
+        "file_path": "tulu3_persona_if/instruction-following/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "tulu3_persona_if/instruction-following/True_True.json"
+      }
+    }
+  },
+  "mmlu_pro_validation": {
+    "math": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_pro_validation/math/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_pro_validation/math/False_False.json"
+      }
+    },
+    "physics": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_pro_validation/physics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_pro_validation/physics/True_True.json"
+      }
+    },
+    "business": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_pro_validation/business/True_False.json"
+      }
+    },
+    "biology": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_pro_validation/biology/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_pro_validation/biology/False_False.json"
+      }
+    },
+    "chemistry": {
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_pro_validation/chemistry/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_pro_validation/chemistry/False_False.json"
+      }
+    },
+    "computer science": {
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_pro_validation/computer science/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_pro_validation/computer science/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_pro_validation/computer science/True_True.json"
+      }
+    },
+    "economics": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_pro_validation/economics/True_False.json"
+      }
+    },
+    "engineering": {
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_pro_validation/engineering/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_pro_validation/engineering/True_False.json"
+      }
+    },
+    "philosophy": {
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_pro_validation/philosophy/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_pro_validation/philosophy/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_pro_validation/philosophy/True_True.json"
+      }
+    },
+    "health": {
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_pro_validation/health/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_pro_validation/health/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_pro_validation/health/True_False.json"
+      }
+    },
+    "other": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_pro_validation/other/True_False.json"
+      }
+    },
+    "history": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_pro_validation/history/True_False.json"
+      }
+    },
+    "psychology": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_pro_validation/psychology/True_False.json"
+      }
+    },
+    "law": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_pro_validation/law/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_pro_validation/law/True_True.json"
+      }
+    }
+  },
+  "gpqa_extended": {
+    "Molecular Biology": {
+      "False_False": {
+        "sample_count": 44,
+        "file_path": "gpqa_extended/Molecular Biology/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 41,
+        "file_path": "gpqa_extended/Molecular Biology/True_False.json"
+      }
+    },
+    "Physics (general)": {
+      "False_False": {
+        "sample_count": 30,
+        "file_path": "gpqa_extended/Physics (general)/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 13,
+        "file_path": "gpqa_extended/Physics (general)/True_False.json"
+      }
+    },
+    "Organic Chemistry": {
+      "False_False": {
+        "sample_count": 138,
+        "file_path": "gpqa_extended/Organic Chemistry/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 2,
+        "file_path": "gpqa_extended/Organic Chemistry/False_True.json"
+      },
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "gpqa_extended/Organic Chemistry/True_False.json"
+      }
+    },
+    "Chemistry (general)": {
+      "False_False": {
+        "sample_count": 56,
+        "file_path": "gpqa_extended/Chemistry (general)/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 8,
+        "file_path": "gpqa_extended/Chemistry (general)/True_False.json"
+      }
+    },
+    "Relativistic Mechanics": {
+      "False_False": {
+        "sample_count": 8,
+        "file_path": "gpqa_extended/Relativistic Mechanics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "gpqa_extended/Relativistic Mechanics/True_False.json"
+      }
+    },
+    "Quantum Mechanics": {
+      "False_False": {
+        "sample_count": 52,
+        "file_path": "gpqa_extended/Quantum Mechanics/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "gpqa_extended/Quantum Mechanics/False_True.json"
+      },
+      "True_False": {
+        "sample_count": 11,
+        "file_path": "gpqa_extended/Quantum Mechanics/True_False.json"
+      }
+    },
+    "Electromagnetism and Photonics": {
+      "False_False": {
+        "sample_count": 10,
+        "file_path": "gpqa_extended/Electromagnetism and Photonics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 2,
+        "file_path": "gpqa_extended/Electromagnetism and Photonics/True_False.json"
+      }
+    },
+    "Genetics": {
+      "False_False": {
+        "sample_count": 11,
+        "file_path": "gpqa_extended/Genetics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "gpqa_extended/Genetics/True_False.json"
+      }
+    },
+    "High-energy particle physics": {
+      "True_False": {
+        "sample_count": 22,
+        "file_path": "gpqa_extended/High-energy particle physics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 24,
+        "file_path": "gpqa_extended/High-energy particle physics/False_False.json"
+      }
+    },
+    "Astrophysics": {
+      "False_False": {
+        "sample_count": 32,
+        "file_path": "gpqa_extended/Astrophysics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "gpqa_extended/Astrophysics/True_False.json"
+      }
+    },
+    "Condensed Matter Physics": {
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "gpqa_extended/Condensed Matter Physics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 1,
+        "file_path": "gpqa_extended/Condensed Matter Physics/True_False.json"
+      }
+    },
+    "Analytical Chemistry": {
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "gpqa_extended/Analytical Chemistry/False_False.json"
+      }
+    },
+    "Statistical Mechanics": {
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "gpqa_extended/Statistical Mechanics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 2,
+        "file_path": "gpqa_extended/Statistical Mechanics/True_False.json"
+      }
+    },
+    "Inorganic Chemistry": {
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "gpqa_extended/Inorganic Chemistry/False_False.json"
+      }
+    },
+    "Physical Chemistry": {
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "gpqa_extended/Physical Chemistry/False_False.json"
+      }
+    },
+    "Optics and Acoustics": {
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "gpqa_extended/Optics and Acoustics/False_False.json"
+      }
+    }
+  },
+  "mmlu_pro_test": {
+    "business": {
+      "True_False": {
+        "sample_count": 509,
+        "file_path": "mmlu_pro_test/business/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 249,
+        "file_path": "mmlu_pro_test/business/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_pro_test/business/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 27,
+        "file_path": "mmlu_pro_test/business/True_True.json"
+      }
+    },
+    "law": {
+      "False_False": {
+        "sample_count": 707,
+        "file_path": "mmlu_pro_test/law/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 373,
+        "file_path": "mmlu_pro_test/law/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 19,
+        "file_path": "mmlu_pro_test/law/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_pro_test/law/True_True.json"
+      }
+    },
+    "physics": {
+      "False_False": {
+        "sample_count": 523,
+        "file_path": "mmlu_pro_test/physics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 740,
+        "file_path": "mmlu_pro_test/physics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 28,
+        "file_path": "mmlu_pro_test/physics/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 8,
+        "file_path": "mmlu_pro_test/physics/False_True.json"
+      }
+    },
+    "computer science": {
+      "True_False": {
+        "sample_count": 289,
+        "file_path": "mmlu_pro_test/computer science/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 109,
+        "file_path": "mmlu_pro_test/computer science/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 9,
+        "file_path": "mmlu_pro_test/computer science/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_pro_test/computer science/False_True.json"
+      }
+    },
+    "philosophy": {
+      "True_False": {
+        "sample_count": 290,
+        "file_path": "mmlu_pro_test/philosophy/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 182,
+        "file_path": "mmlu_pro_test/philosophy/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 18,
+        "file_path": "mmlu_pro_test/philosophy/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 9,
+        "file_path": "mmlu_pro_test/philosophy/True_True.json"
+      }
+    },
+    "engineering": {
+      "True_False": {
+        "sample_count": 215,
+        "file_path": "mmlu_pro_test/engineering/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 733,
+        "file_path": "mmlu_pro_test/engineering/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 11,
+        "file_path": "mmlu_pro_test/engineering/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 10,
+        "file_path": "mmlu_pro_test/engineering/True_True.json"
+      }
+    },
+    "psychology": {
+      "False_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_pro_test/psychology/False_True.json"
+      },
+      "True_False": {
+        "sample_count": 661,
+        "file_path": "mmlu_pro_test/psychology/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 115,
+        "file_path": "mmlu_pro_test/psychology/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 18,
+        "file_path": "mmlu_pro_test/psychology/True_True.json"
+      }
+    },
+    "biology": {
+      "True_False": {
+        "sample_count": 567,
+        "file_path": "mmlu_pro_test/biology/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 135,
+        "file_path": "mmlu_pro_test/biology/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_pro_test/biology/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 11,
+        "file_path": "mmlu_pro_test/biology/True_True.json"
+      }
+    },
+    "chemistry": {
+      "True_False": {
+        "sample_count": 562,
+        "file_path": "mmlu_pro_test/chemistry/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 551,
+        "file_path": "mmlu_pro_test/chemistry/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 7,
+        "file_path": "mmlu_pro_test/chemistry/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 12,
+        "file_path": "mmlu_pro_test/chemistry/True_True.json"
+      }
+    },
+    "history": {
+      "True_False": {
+        "sample_count": 268,
+        "file_path": "mmlu_pro_test/history/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 109,
+        "file_path": "mmlu_pro_test/history/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_pro_test/history/False_True.json"
+      }
+    },
+    "other": {
+      "True_False": {
+        "sample_count": 698,
+        "file_path": "mmlu_pro_test/other/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 186,
+        "file_path": "mmlu_pro_test/other/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 14,
+        "file_path": "mmlu_pro_test/other/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 26,
+        "file_path": "mmlu_pro_test/other/True_True.json"
+      }
+    },
+    "health": {
+      "True_False": {
+        "sample_count": 622,
+        "file_path": "mmlu_pro_test/health/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 154,
+        "file_path": "mmlu_pro_test/health/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 34,
+        "file_path": "mmlu_pro_test/health/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 8,
+        "file_path": "mmlu_pro_test/health/False_True.json"
+      }
+    },
+    "economics": {
+      "True_False": {
+        "sample_count": 662,
+        "file_path": "mmlu_pro_test/economics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 154,
+        "file_path": "mmlu_pro_test/economics/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 26,
+        "file_path": "mmlu_pro_test/economics/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_pro_test/economics/False_True.json"
+      }
+    },
+    "math": {
+      "True_False": {
+        "sample_count": 774,
+        "file_path": "mmlu_pro_test/math/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 453,
+        "file_path": "mmlu_pro_test/math/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 119,
+        "file_path": "mmlu_pro_test/math/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 5,
+        "file_path": "mmlu_pro_test/math/False_True.json"
+      }
+    }
+  },
+  "mmlu_test": {
+    "abstract_algebra": {
+      "False_False": {
+        "sample_count": 19,
+        "file_path": "mmlu_test/abstract_algebra/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 79,
+        "file_path": "mmlu_test/abstract_algebra/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/abstract_algebra/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/abstract_algebra/True_True.json"
+      }
+    },
+    "anatomy": {
+      "True_False": {
+        "sample_count": 105,
+        "file_path": "mmlu_test/anatomy/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 17,
+        "file_path": "mmlu_test/anatomy/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 13,
+        "file_path": "mmlu_test/anatomy/True_True.json"
+      }
+    },
+    "astronomy": {
+      "True_False": {
+        "sample_count": 132,
+        "file_path": "mmlu_test/astronomy/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 13,
+        "file_path": "mmlu_test/astronomy/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 6,
+        "file_path": "mmlu_test/astronomy/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/astronomy/False_True.json"
+      }
+    },
+    "business_ethics": {
+      "True_False": {
+        "sample_count": 81,
+        "file_path": "mmlu_test/business_ethics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 14,
+        "file_path": "mmlu_test/business_ethics/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_test/business_ethics/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/business_ethics/False_True.json"
+      }
+    },
+    "clinical_knowledge": {
+      "True_False": {
+        "sample_count": 220,
+        "file_path": "mmlu_test/clinical_knowledge/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 19,
+        "file_path": "mmlu_test/clinical_knowledge/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 25,
+        "file_path": "mmlu_test/clinical_knowledge/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/clinical_knowledge/False_True.json"
+      }
+    },
+    "college_biology": {
+      "True_False": {
+        "sample_count": 129,
+        "file_path": "mmlu_test/college_biology/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 5,
+        "file_path": "mmlu_test/college_biology/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 10,
+        "file_path": "mmlu_test/college_biology/False_False.json"
+      }
+    },
+    "college_chemistry": {
+      "True_False": {
+        "sample_count": 70,
+        "file_path": "mmlu_test/college_chemistry/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 26,
+        "file_path": "mmlu_test/college_chemistry/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_test/college_chemistry/True_True.json"
+      }
+    },
+    "college_computer_science": {
+      "True_False": {
+        "sample_count": 71,
+        "file_path": "mmlu_test/college_computer_science/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 27,
+        "file_path": "mmlu_test/college_computer_science/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_test/college_computer_science/True_True.json"
+      }
+    },
+    "college_mathematics": {
+      "False_False": {
+        "sample_count": 48,
+        "file_path": "mmlu_test/college_mathematics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 51,
+        "file_path": "mmlu_test/college_mathematics/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/college_mathematics/False_True.json"
+      }
+    },
+    "college_medicine": {
+      "True_False": {
+        "sample_count": 128,
+        "file_path": "mmlu_test/college_medicine/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/college_medicine/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 19,
+        "file_path": "mmlu_test/college_medicine/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 25,
+        "file_path": "mmlu_test/college_medicine/False_False.json"
+      }
+    },
+    "college_physics": {
+      "True_False": {
+        "sample_count": 81,
+        "file_path": "mmlu_test/college_physics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 18,
+        "file_path": "mmlu_test/college_physics/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_test/college_physics/True_True.json"
+      }
+    },
+    "computer_security": {
+      "True_False": {
+        "sample_count": 85,
+        "file_path": "mmlu_test/computer_security/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 10,
+        "file_path": "mmlu_test/computer_security/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 5,
+        "file_path": "mmlu_test/computer_security/True_True.json"
+      }
+    },
+    "conceptual_physics": {
+      "True_False": {
+        "sample_count": 204,
+        "file_path": "mmlu_test/conceptual_physics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 19,
+        "file_path": "mmlu_test/conceptual_physics/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 12,
+        "file_path": "mmlu_test/conceptual_physics/False_False.json"
+      }
+    },
+    "econometrics": {
+      "True_False": {
+        "sample_count": 79,
+        "file_path": "mmlu_test/econometrics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 32,
+        "file_path": "mmlu_test/econometrics/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_test/econometrics/True_True.json"
+      }
+    },
+    "electrical_engineering": {
+      "True_False": {
+        "sample_count": 111,
+        "file_path": "mmlu_test/electrical_engineering/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 22,
+        "file_path": "mmlu_test/electrical_engineering/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 12,
+        "file_path": "mmlu_test/electrical_engineering/True_True.json"
+      }
+    },
+    "elementary_mathematics": {
+      "True_True": {
+        "sample_count": 118,
+        "file_path": "mmlu_test/elementary_mathematics/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 252,
+        "file_path": "mmlu_test/elementary_mathematics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 8,
+        "file_path": "mmlu_test/elementary_mathematics/False_False.json"
+      }
+    },
+    "formal_logic": {
+      "True_False": {
+        "sample_count": 83,
+        "file_path": "mmlu_test/formal_logic/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 8,
+        "file_path": "mmlu_test/formal_logic/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 33,
+        "file_path": "mmlu_test/formal_logic/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_test/formal_logic/False_True.json"
+      }
+    },
+    "global_facts": {
+      "True_False": {
+        "sample_count": 89,
+        "file_path": "mmlu_test/global_facts/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 10,
+        "file_path": "mmlu_test/global_facts/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/global_facts/True_True.json"
+      }
+    },
+    "high_school_biology": {
+      "True_False": {
+        "sample_count": 280,
+        "file_path": "mmlu_test/high_school_biology/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 12,
+        "file_path": "mmlu_test/high_school_biology/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 18,
+        "file_path": "mmlu_test/high_school_biology/True_True.json"
+      }
+    },
+    "high_school_chemistry": {
+      "True_False": {
+        "sample_count": 163,
+        "file_path": "mmlu_test/high_school_chemistry/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 36,
+        "file_path": "mmlu_test/high_school_chemistry/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_test/high_school_chemistry/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/high_school_chemistry/False_True.json"
+      }
+    },
+    "high_school_computer_science": {
+      "True_False": {
+        "sample_count": 88,
+        "file_path": "mmlu_test/high_school_computer_science/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 10,
+        "file_path": "mmlu_test/high_school_computer_science/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_test/high_school_computer_science/False_False.json"
+      }
+    },
+    "high_school_european_history": {
+      "True_False": {
+        "sample_count": 151,
+        "file_path": "mmlu_test/high_school_european_history/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 13,
+        "file_path": "mmlu_test/high_school_european_history/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/high_school_european_history/True_True.json"
+      }
+    },
+    "high_school_geography": {
+      "False_False": {
+        "sample_count": 12,
+        "file_path": "mmlu_test/high_school_geography/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 176,
+        "file_path": "mmlu_test/high_school_geography/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/high_school_geography/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 9,
+        "file_path": "mmlu_test/high_school_geography/True_True.json"
+      }
+    },
+    "high_school_government_and_politics": {
+      "True_False": {
+        "sample_count": 180,
+        "file_path": "mmlu_test/high_school_government_and_politics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 5,
+        "file_path": "mmlu_test/high_school_government_and_politics/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_test/high_school_government_and_politics/False_True.json"
+      },
+      "False_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_test/high_school_government_and_politics/False_False.json"
+      }
+    },
+    "high_school_macroeconomics": {
+      "True_False": {
+        "sample_count": 341,
+        "file_path": "mmlu_test/high_school_macroeconomics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 28,
+        "file_path": "mmlu_test/high_school_macroeconomics/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 19,
+        "file_path": "mmlu_test/high_school_macroeconomics/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_test/high_school_macroeconomics/False_True.json"
+      }
+    },
+    "high_school_mathematics": {
+      "True_False": {
+        "sample_count": 189,
+        "file_path": "mmlu_test/high_school_mathematics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 66,
+        "file_path": "mmlu_test/high_school_mathematics/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 15,
+        "file_path": "mmlu_test/high_school_mathematics/True_True.json"
+      }
+    },
+    "high_school_microeconomics": {
+      "True_False": {
+        "sample_count": 210,
+        "file_path": "mmlu_test/high_school_microeconomics/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/high_school_microeconomics/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 17,
+        "file_path": "mmlu_test/high_school_microeconomics/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 10,
+        "file_path": "mmlu_test/high_school_microeconomics/False_False.json"
+      }
+    },
+    "high_school_physics": {
+      "True_False": {
+        "sample_count": 117,
+        "file_path": "mmlu_test/high_school_physics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 32,
+        "file_path": "mmlu_test/high_school_physics/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_test/high_school_physics/True_True.json"
+      }
+    },
+    "high_school_psychology": {
+      "True_True": {
+        "sample_count": 35,
+        "file_path": "mmlu_test/high_school_psychology/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 499,
+        "file_path": "mmlu_test/high_school_psychology/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 11,
+        "file_path": "mmlu_test/high_school_psychology/False_False.json"
+      }
+    },
+    "high_school_statistics": {
+      "False_False": {
+        "sample_count": 31,
+        "file_path": "mmlu_test/high_school_statistics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 184,
+        "file_path": "mmlu_test/high_school_statistics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/high_school_statistics/True_True.json"
+      }
+    },
+    "high_school_us_history": {
+      "True_False": {
+        "sample_count": 176,
+        "file_path": "mmlu_test/high_school_us_history/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_test/high_school_us_history/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 25,
+        "file_path": "mmlu_test/high_school_us_history/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/high_school_us_history/False_True.json"
+      }
+    },
+    "high_school_world_history": {
+      "True_False": {
+        "sample_count": 208,
+        "file_path": "mmlu_test/high_school_world_history/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 23,
+        "file_path": "mmlu_test/high_school_world_history/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_test/high_school_world_history/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_test/high_school_world_history/False_True.json"
+      }
+    },
+    "human_aging": {
+      "True_False": {
+        "sample_count": 208,
+        "file_path": "mmlu_test/human_aging/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 11,
+        "file_path": "mmlu_test/human_aging/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_test/human_aging/True_True.json"
+      }
+    },
+    "human_sexuality": {
+      "True_False": {
+        "sample_count": 116,
+        "file_path": "mmlu_test/human_sexuality/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 9,
+        "file_path": "mmlu_test/human_sexuality/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 6,
+        "file_path": "mmlu_test/human_sexuality/True_True.json"
+      }
+    },
+    "international_law": {
+      "True_False": {
+        "sample_count": 101,
+        "file_path": "mmlu_test/international_law/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 11,
+        "file_path": "mmlu_test/international_law/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 6,
+        "file_path": "mmlu_test/international_law/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_test/international_law/False_True.json"
+      }
+    },
+    "jurisprudence": {
+      "True_False": {
+        "sample_count": 84,
+        "file_path": "mmlu_test/jurisprudence/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 18,
+        "file_path": "mmlu_test/jurisprudence/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_test/jurisprudence/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_test/jurisprudence/True_True.json"
+      }
+    },
+    "logical_fallacies": {
+      "True_False": {
+        "sample_count": 133,
+        "file_path": "mmlu_test/logical_fallacies/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 7,
+        "file_path": "mmlu_test/logical_fallacies/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 21,
+        "file_path": "mmlu_test/logical_fallacies/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_test/logical_fallacies/False_True.json"
+      }
+    },
+    "machine_learning": {
+      "False_False": {
+        "sample_count": 11,
+        "file_path": "mmlu_test/machine_learning/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 100,
+        "file_path": "mmlu_test/machine_learning/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/machine_learning/True_True.json"
+      }
+    },
+    "management": {
+      "True_False": {
+        "sample_count": 84,
+        "file_path": "mmlu_test/management/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 10,
+        "file_path": "mmlu_test/management/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 6,
+        "file_path": "mmlu_test/management/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_test/management/False_True.json"
+      }
+    },
+    "marketing": {
+      "True_False": {
+        "sample_count": 219,
+        "file_path": "mmlu_test/marketing/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 7,
+        "file_path": "mmlu_test/marketing/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 8,
+        "file_path": "mmlu_test/marketing/True_True.json"
+      }
+    },
+    "medical_genetics": {
+      "True_False": {
+        "sample_count": 83,
+        "file_path": "mmlu_test/medical_genetics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 14,
+        "file_path": "mmlu_test/medical_genetics/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_test/medical_genetics/False_False.json"
+      }
+    },
+    "miscellaneous": {
+      "True_False": {
+        "sample_count": 655,
+        "file_path": "mmlu_test/miscellaneous/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 44,
+        "file_path": "mmlu_test/miscellaneous/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 75,
+        "file_path": "mmlu_test/miscellaneous/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 9,
+        "file_path": "mmlu_test/miscellaneous/False_True.json"
+      }
+    },
+    "moral_disputes": {
+      "True_False": {
+        "sample_count": 256,
+        "file_path": "mmlu_test/moral_disputes/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 72,
+        "file_path": "mmlu_test/moral_disputes/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 10,
+        "file_path": "mmlu_test/moral_disputes/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 8,
+        "file_path": "mmlu_test/moral_disputes/False_True.json"
+      }
+    },
+    "moral_scenarios": {
+      "True_False": {
+        "sample_count": 851,
+        "file_path": "mmlu_test/moral_scenarios/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 36,
+        "file_path": "mmlu_test/moral_scenarios/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_test/moral_scenarios/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_test/moral_scenarios/True_True.json"
+      }
+    },
+    "nutrition": {
+      "False_False": {
+        "sample_count": 21,
+        "file_path": "mmlu_test/nutrition/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 271,
+        "file_path": "mmlu_test/nutrition/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 13,
+        "file_path": "mmlu_test/nutrition/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/nutrition/False_True.json"
+      }
+    },
+    "philosophy": {
+      "True_False": {
+        "sample_count": 224,
+        "file_path": "mmlu_test/philosophy/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 21,
+        "file_path": "mmlu_test/philosophy/False_True.json"
+      },
+      "False_False": {
+        "sample_count": 55,
+        "file_path": "mmlu_test/philosophy/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 11,
+        "file_path": "mmlu_test/philosophy/True_True.json"
+      }
+    },
+    "prehistory": {
+      "True_False": {
+        "sample_count": 299,
+        "file_path": "mmlu_test/prehistory/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 18,
+        "file_path": "mmlu_test/prehistory/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 6,
+        "file_path": "mmlu_test/prehistory/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/prehistory/False_True.json"
+      }
+    },
+    "professional_accounting": {
+      "True_False": {
+        "sample_count": 215,
+        "file_path": "mmlu_test/professional_accounting/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 59,
+        "file_path": "mmlu_test/professional_accounting/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_test/professional_accounting/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 5,
+        "file_path": "mmlu_test/professional_accounting/True_True.json"
+      }
+    },
+    "professional_law": {
+      "False_False": {
+        "sample_count": 851,
+        "file_path": "mmlu_test/professional_law/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 646,
+        "file_path": "mmlu_test/professional_law/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 36,
+        "file_path": "mmlu_test/professional_law/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/professional_law/True_True.json"
+      }
+    },
+    "professional_medicine": {
+      "True_False": {
+        "sample_count": 237,
+        "file_path": "mmlu_test/professional_medicine/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 32,
+        "file_path": "mmlu_test/professional_medicine/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_test/professional_medicine/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/professional_medicine/False_True.json"
+      }
+    },
+    "professional_psychology": {
+      "True_True": {
+        "sample_count": 19,
+        "file_path": "mmlu_test/professional_psychology/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 547,
+        "file_path": "mmlu_test/professional_psychology/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 44,
+        "file_path": "mmlu_test/professional_psychology/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_test/professional_psychology/False_True.json"
+      }
+    },
+    "public_relations": {
+      "True_False": {
+        "sample_count": 98,
+        "file_path": "mmlu_test/public_relations/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 9,
+        "file_path": "mmlu_test/public_relations/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_test/public_relations/True_True.json"
+      }
+    },
+    "security_studies": {
+      "True_False": {
+        "sample_count": 192,
+        "file_path": "mmlu_test/security_studies/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 52,
+        "file_path": "mmlu_test/security_studies/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/security_studies/False_True.json"
+      }
+    },
+    "sociology": {
+      "True_False": {
+        "sample_count": 178,
+        "file_path": "mmlu_test/sociology/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 16,
+        "file_path": "mmlu_test/sociology/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_test/sociology/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_test/sociology/True_True.json"
+      }
+    },
+    "us_foreign_policy": {
+      "True_True": {
+        "sample_count": 6,
+        "file_path": "mmlu_test/us_foreign_policy/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 90,
+        "file_path": "mmlu_test/us_foreign_policy/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_test/us_foreign_policy/False_False.json"
+      }
+    },
+    "virology": {
+      "True_False": {
+        "sample_count": 146,
+        "file_path": "mmlu_test/virology/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 10,
+        "file_path": "mmlu_test/virology/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 9,
+        "file_path": "mmlu_test/virology/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/virology/False_True.json"
+      }
+    },
+    "world_religions": {
+      "True_False": {
+        "sample_count": 146,
+        "file_path": "mmlu_test/world_religions/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 9,
+        "file_path": "mmlu_test/world_religions/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 15,
+        "file_path": "mmlu_test/world_religions/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_test/world_religions/False_True.json"
+      }
+    }
+  },
+  "sorry_bench_base": {
+    "Personal Insulting Words": {
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "sorry_bench_base/Personal Insulting Words/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Personal Insulting Words/False_True.json"
+      }
+    },
+    "Social-group Insulting Words": {
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "sorry_bench_base/Social-group Insulting Words/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Social-group Insulting Words/False_False.json"
+      }
+    },
+    "Threatening Words": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Threatening Words/True_False.json"
+      }
+    },
+    "Lewd and Obscene Words": {
+      "True_False": {
+        "sample_count": 8,
+        "file_path": "sorry_bench_base/Lewd and Obscene Words/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Lewd and Obscene Words/False_True.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Lewd and Obscene Words/False_False.json"
+      }
+    },
+    "Libelous Words": {
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "sorry_bench_base/Libelous Words/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Libelous Words/True_True.json"
+      }
+    },
+    "Self-Harm": {
+      "True_False": {
+        "sample_count": 8,
+        "file_path": "sorry_bench_base/Self-Harm/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "sorry_bench_base/Self-Harm/False_False.json"
+      }
+    },
+    "Violent Crimes": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Violent Crimes/True_False.json"
+      }
+    },
+    "Harassment": {
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "sorry_bench_base/Harassment/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Harassment/True_True.json"
+      }
+    },
+    "Sexual Crimes": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Sexual Crimes/True_False.json"
+      }
+    },
+    "Property Crimes": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Property Crimes/True_False.json"
+      }
+    },
+    "Public Order Crimes": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Public Order Crimes/True_False.json"
+      }
+    },
+    "Impersonation": {
+      "False_False": {
+        "sample_count": 4,
+        "file_path": "sorry_bench_base/Impersonation/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 6,
+        "file_path": "sorry_bench_base/Impersonation/True_False.json"
+      }
+    },
+    "General Advice for System Intrusion, Hacking & Cyber Attacks, Data Privacy and Confidentiality Violations": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/General Advice for System Intrusion, Hacking & Cyber Attacks, Data Privacy and Confidentiality Violations/True_False.json"
+      }
+    },
+    "Malware Code Generation": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Malware Code Generation/True_False.json"
+      }
+    },
+    "Fraud, Scams, and Deception": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Fraud, Scams, and Deception/True_False.json"
+      }
+    },
+    "Financial Crimes": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Financial Crimes/True_False.json"
+      }
+    },
+    "Intellectual Property Infringement": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Intellectual Property Infringement/True_False.json"
+      }
+    },
+    "Personal Identifiable Information Violations": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Personal Identifiable Information Violations/True_False.json"
+      }
+    },
+    "Illegal Crafting, Manufacturing, and Distribution": {
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "sorry_bench_base/Illegal Crafting, Manufacturing, and Distribution/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Illegal Crafting, Manufacturing, and Distribution/False_False.json"
+      }
+    },
+    "Terrorism": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Terrorism/True_False.json"
+      }
+    },
+    "Child-related Crimes": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Child-related Crimes/True_False.json"
+      }
+    },
+    "Animal-related Crimes": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Animal-related Crimes/True_False.json"
+      }
+    },
+    "Environmental Crimes": {
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "sorry_bench_base/Environmental Crimes/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Environmental Crimes/False_True.json"
+      }
+    },
+    "Evasion of Law Enforcement": {
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "sorry_bench_base/Evasion of Law Enforcement/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Evasion of Law Enforcement/True_True.json"
+      }
+    },
+    "Human Elimination & World Domination": {
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Human Elimination & World Domination/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "sorry_bench_base/Human Elimination & World Domination/True_False.json"
+      }
+    },
+    "Advice on Adult Content": {
+      "True_False": {
+        "sample_count": 7,
+        "file_path": "sorry_bench_base/Advice on Adult Content/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Advice on Adult Content/False_True.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "sorry_bench_base/Advice on Adult Content/False_False.json"
+      }
+    },
+    "Sexual Explicit Content Generation": {
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "sorry_bench_base/Sexual Explicit Content Generation/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 6,
+        "file_path": "sorry_bench_base/Sexual Explicit Content Generation/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Sexual Explicit Content Generation/False_True.json"
+      }
+    },
+    "Non-sexual Explicit Content Generation": {
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "sorry_bench_base/Non-sexual Explicit Content Generation/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Non-sexual Explicit Content Generation/False_False.json"
+      }
+    },
+    "Fake News Generation": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "sorry_bench_base/Fake News Generation/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 4,
+        "file_path": "sorry_bench_base/Fake News Generation/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 2,
+        "file_path": "sorry_bench_base/Fake News Generation/False_True.json"
+      }
+    },
+    "False Advertising": {
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "sorry_bench_base/False Advertising/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 3,
+        "file_path": "sorry_bench_base/False Advertising/False_True.json"
+      },
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "sorry_bench_base/False Advertising/True_False.json"
+      }
+    },
+    "Advice on Discrimination Behaviors": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Advice on Discrimination Behaviors/True_False.json"
+      }
+    },
+    "Military Use": {
+      "True_False": {
+        "sample_count": 6,
+        "file_path": "sorry_bench_base/Military Use/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Military Use/False_True.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "sorry_bench_base/Military Use/False_False.json"
+      }
+    },
+    "Political Belief Promotion": {
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Political Belief Promotion/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "sorry_bench_base/Political Belief Promotion/True_False.json"
+      }
+    },
+    "Ethical Belief Promotion": {
+      "True_False": {
+        "sample_count": 7,
+        "file_path": "sorry_bench_base/Ethical Belief Promotion/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Ethical Belief Promotion/False_True.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "sorry_bench_base/Ethical Belief Promotion/False_False.json"
+      }
+    },
+    "Religion Promotion": {
+      "False_True": {
+        "sample_count": 4,
+        "file_path": "sorry_bench_base/Religion Promotion/False_True.json"
+      },
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "sorry_bench_base/Religion Promotion/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "sorry_bench_base/Religion Promotion/False_False.json"
+      }
+    },
+    "Social Stereotype Promotion": {
+      "True_False": {
+        "sample_count": 6,
+        "file_path": "sorry_bench_base/Social Stereotype Promotion/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 4,
+        "file_path": "sorry_bench_base/Social Stereotype Promotion/False_False.json"
+      }
+    },
+    "Extremist Content Promotion": {
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "sorry_bench_base/Extremist Content Promotion/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Extremist Content Promotion/False_False.json"
+      }
+    },
+    "Conspiracy Theories Promotion": {
+      "True_False": {
+        "sample_count": 7,
+        "file_path": "sorry_bench_base/Conspiracy Theories Promotion/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "sorry_bench_base/Conspiracy Theories Promotion/False_False.json"
+      }
+    },
+    "False Common Knowledge Promotion": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "sorry_bench_base/False Common Knowledge Promotion/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 4,
+        "file_path": "sorry_bench_base/False Common Knowledge Promotion/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/False Common Knowledge Promotion/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/False Common Knowledge Promotion/False_True.json"
+      }
+    },
+    "Harmful & Unhealthy Behaviors Promotion": {
+      "True_False": {
+        "sample_count": 7,
+        "file_path": "sorry_bench_base/Harmful & Unhealthy Behaviors Promotion/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "sorry_bench_base/Harmful & Unhealthy Behaviors Promotion/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Harmful & Unhealthy Behaviors Promotion/False_True.json"
+      }
+    },
+    "Medical Advice": {
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "sorry_bench_base/Medical Advice/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 5,
+        "file_path": "sorry_bench_base/Medical Advice/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 2,
+        "file_path": "sorry_bench_base/Medical Advice/False_True.json"
+      }
+    },
+    "Financial Advice": {
+      "False_True": {
+        "sample_count": 3,
+        "file_path": "sorry_bench_base/Financial Advice/False_True.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "sorry_bench_base/Financial Advice/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "sorry_bench_base/Financial Advice/True_False.json"
+      }
+    },
+    "Legal Consulting Advice": {
+      "False_True": {
+        "sample_count": 2,
+        "file_path": "sorry_bench_base/Legal Consulting Advice/False_True.json"
+      },
+      "False_False": {
+        "sample_count": 5,
+        "file_path": "sorry_bench_base/Legal Consulting Advice/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "sorry_bench_base/Legal Consulting Advice/True_False.json"
+      }
+    },
+    "Governance Decision Advice": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "sorry_bench_base/Governance Decision Advice/True_False.json"
+      }
+    },
+    "Dangerous Machinery Operation Advice": {
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "sorry_bench_base/Dangerous Machinery Operation Advice/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "sorry_bench_base/Dangerous Machinery Operation Advice/False_False.json"
+      }
+    }
+  },
+  "gpqa_main": {
+    "Molecular Biology": {
+      "False_False": {
+        "sample_count": 32,
+        "file_path": "gpqa_main/Molecular Biology/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 30,
+        "file_path": "gpqa_main/Molecular Biology/True_False.json"
+      }
+    },
+    "Physics (general)": {
+      "False_False": {
+        "sample_count": 28,
+        "file_path": "gpqa_main/Physics (general)/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 8,
+        "file_path": "gpqa_main/Physics (general)/True_False.json"
+      }
+    },
+    "Organic Chemistry": {
+      "False_False": {
+        "sample_count": 123,
+        "file_path": "gpqa_main/Organic Chemistry/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "gpqa_main/Organic Chemistry/False_True.json"
+      },
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "gpqa_main/Organic Chemistry/True_False.json"
+      }
+    },
+    "Chemistry (general)": {
+      "False_False": {
+        "sample_count": 45,
+        "file_path": "gpqa_main/Chemistry (general)/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 6,
+        "file_path": "gpqa_main/Chemistry (general)/True_False.json"
+      }
+    },
+    "Relativistic Mechanics": {
+      "False_False": {
+        "sample_count": 5,
+        "file_path": "gpqa_main/Relativistic Mechanics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "gpqa_main/Relativistic Mechanics/True_False.json"
+      }
+    },
+    "Quantum Mechanics": {
+      "False_False": {
+        "sample_count": 40,
+        "file_path": "gpqa_main/Quantum Mechanics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 13,
+        "file_path": "gpqa_main/Quantum Mechanics/True_False.json"
+      }
+    },
+    "Electromagnetism and Photonics": {
+      "False_False": {
+        "sample_count": 9,
+        "file_path": "gpqa_main/Electromagnetism and Photonics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 2,
+        "file_path": "gpqa_main/Electromagnetism and Photonics/True_False.json"
+      }
+    },
+    "Genetics": {
+      "True_False": {
+        "sample_count": 7,
+        "file_path": "gpqa_main/Genetics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 9,
+        "file_path": "gpqa_main/Genetics/False_False.json"
+      }
+    },
+    "High-energy particle physics": {
+      "True_False": {
+        "sample_count": 14,
+        "file_path": "gpqa_main/High-energy particle physics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 19,
+        "file_path": "gpqa_main/High-energy particle physics/False_False.json"
+      }
+    },
+    "Astrophysics": {
+      "False_False": {
+        "sample_count": 25,
+        "file_path": "gpqa_main/Astrophysics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 12,
+        "file_path": "gpqa_main/Astrophysics/True_False.json"
+      }
+    },
+    "Statistical Mechanics": {
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "gpqa_main/Statistical Mechanics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 2,
+        "file_path": "gpqa_main/Statistical Mechanics/True_False.json"
+      }
+    },
+    "Inorganic Chemistry": {
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "gpqa_main/Inorganic Chemistry/False_False.json"
+      }
+    },
+    "Condensed Matter Physics": {
+      "True_False": {
+        "sample_count": 1,
+        "file_path": "gpqa_main/Condensed Matter Physics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "gpqa_main/Condensed Matter Physics/False_False.json"
+      }
+    },
+    "Physical Chemistry": {
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "gpqa_main/Physical Chemistry/False_False.json"
+      }
+    },
+    "Optics and Acoustics": {
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "gpqa_main/Optics and Acoustics/False_False.json"
+      }
+    },
+    "Analytical Chemistry": {
+      "True_False": {
+        "sample_count": 1,
+        "file_path": "gpqa_main/Analytical Chemistry/True_False.json"
+      }
+    }
+  },
+  "Polyglot-or-Not_Fact-Completion": {
+    "fact_checking": {
+      "False_True": {
+        "sample_count": 27,
+        "file_path": "Polyglot-or-Not_Fact-Completion/fact_checking/False_True.json"
+      },
+      "False_False": {
+        "sample_count": 40,
+        "file_path": "Polyglot-or-Not_Fact-Completion/fact_checking/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 457,
+        "file_path": "Polyglot-or-Not_Fact-Completion/fact_checking/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 26,
+        "file_path": "Polyglot-or-Not_Fact-Completion/fact_checking/True_True.json"
+      }
+    }
+  },
+  "mmlu_dev": {
+    "abstract_algebra": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/abstract_algebra/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/abstract_algebra/False_False.json"
+      }
+    },
+    "anatomy": {
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/anatomy/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/anatomy/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/anatomy/False_False.json"
+      }
+    },
+    "astronomy": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/astronomy/True_False.json"
+      }
+    },
+    "business_ethics": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/business_ethics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/business_ethics/False_False.json"
+      }
+    },
+    "clinical_knowledge": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/clinical_knowledge/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/clinical_knowledge/True_True.json"
+      }
+    },
+    "college_biology": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/college_biology/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/college_biology/True_True.json"
+      }
+    },
+    "college_chemistry": {
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/college_chemistry/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_dev/college_chemistry/False_False.json"
+      }
+    },
+    "college_computer_science": {
+      "False_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/college_computer_science/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/college_computer_science/True_False.json"
+      }
+    },
+    "college_mathematics": {
+      "True_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_dev/college_mathematics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/college_mathematics/False_False.json"
+      }
+    },
+    "college_medicine": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/college_medicine/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/college_medicine/False_False.json"
+      }
+    },
+    "college_physics": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/college_physics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/college_physics/False_False.json"
+      }
+    },
+    "computer_security": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/computer_security/True_False.json"
+      }
+    },
+    "conceptual_physics": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/conceptual_physics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/conceptual_physics/True_True.json"
+      }
+    },
+    "econometrics": {
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/econometrics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_dev/econometrics/False_False.json"
+      }
+    },
+    "electrical_engineering": {
+      "True_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_dev/electrical_engineering/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/electrical_engineering/False_False.json"
+      }
+    },
+    "elementary_mathematics": {
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/elementary_mathematics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_dev/elementary_mathematics/True_True.json"
+      }
+    },
+    "formal_logic": {
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/formal_logic/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/formal_logic/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/formal_logic/False_True.json"
+      }
+    },
+    "global_facts": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/global_facts/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/global_facts/False_False.json"
+      }
+    },
+    "high_school_biology": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/high_school_biology/True_False.json"
+      }
+    },
+    "high_school_chemistry": {
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/high_school_chemistry/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_dev/high_school_chemistry/False_False.json"
+      }
+    },
+    "high_school_computer_science": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/high_school_computer_science/True_False.json"
+      }
+    },
+    "high_school_european_history": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/high_school_european_history/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/high_school_european_history/False_False.json"
+      }
+    },
+    "high_school_geography": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/high_school_geography/True_False.json"
+      }
+    },
+    "high_school_government_and_politics": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/high_school_government_and_politics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/high_school_government_and_politics/True_True.json"
+      }
+    },
+    "high_school_macroeconomics": {
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/high_school_macroeconomics/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_dev/high_school_macroeconomics/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_dev/high_school_macroeconomics/True_False.json"
+      }
+    },
+    "high_school_mathematics": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/high_school_mathematics/True_False.json"
+      }
+    },
+    "high_school_microeconomics": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/high_school_microeconomics/True_False.json"
+      }
+    },
+    "high_school_physics": {
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/high_school_physics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/high_school_physics/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/high_school_physics/False_False.json"
+      }
+    },
+    "high_school_psychology": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/high_school_psychology/True_False.json"
+      }
+    },
+    "high_school_statistics": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/high_school_statistics/True_False.json"
+      }
+    },
+    "high_school_us_history": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/high_school_us_history/True_False.json"
+      }
+    },
+    "high_school_world_history": {
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_dev/high_school_world_history/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/high_school_world_history/True_False.json"
+      }
+    },
+    "human_aging": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/human_aging/True_False.json"
+      }
+    },
+    "human_sexuality": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/human_sexuality/True_False.json"
+      }
+    },
+    "international_law": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/international_law/True_False.json"
+      }
+    },
+    "jurisprudence": {
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/jurisprudence/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/jurisprudence/True_False.json"
+      }
+    },
+    "logical_fallacies": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/logical_fallacies/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/logical_fallacies/True_True.json"
+      }
+    },
+    "machine_learning": {
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/machine_learning/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/machine_learning/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/machine_learning/False_False.json"
+      }
+    },
+    "management": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/management/True_False.json"
+      }
+    },
+    "marketing": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/marketing/True_False.json"
+      }
+    },
+    "medical_genetics": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/medical_genetics/True_False.json"
+      }
+    },
+    "miscellaneous": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/miscellaneous/True_False.json"
+      }
+    },
+    "moral_disputes": {
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/moral_disputes/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/moral_disputes/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/moral_disputes/False_False.json"
+      }
+    },
+    "moral_scenarios": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/moral_scenarios/True_False.json"
+      }
+    },
+    "nutrition": {
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/nutrition/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/nutrition/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/nutrition/True_True.json"
+      }
+    },
+    "philosophy": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/philosophy/True_False.json"
+      }
+    },
+    "prehistory": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/prehistory/True_False.json"
+      }
+    },
+    "professional_accounting": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/professional_accounting/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/professional_accounting/False_False.json"
+      }
+    },
+    "professional_law": {
+      "True_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_dev/professional_law/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_dev/professional_law/False_False.json"
+      }
+    },
+    "professional_medicine": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/professional_medicine/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/professional_medicine/False_False.json"
+      }
+    },
+    "professional_psychology": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/professional_psychology/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/professional_psychology/True_True.json"
+      }
+    },
+    "public_relations": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/public_relations/True_False.json"
+      }
+    },
+    "security_studies": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/security_studies/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/security_studies/False_False.json"
+      }
+    },
+    "sociology": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/sociology/True_False.json"
+      }
+    },
+    "us_foreign_policy": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/us_foreign_policy/True_False.json"
+      }
+    },
+    "virology": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_dev/virology/True_False.json"
+      }
+    },
+    "world_religions": {
+      "True_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_dev/world_religions/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_dev/world_religions/True_True.json"
+      }
+    }
+  },
+  "mmlu_validation": {
+    "abstract_algebra": {
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/abstract_algebra/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 8,
+        "file_path": "mmlu_validation/abstract_algebra/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/abstract_algebra/False_False.json"
+      }
+    },
+    "anatomy": {
+      "True_False": {
+        "sample_count": 11,
+        "file_path": "mmlu_validation/anatomy/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/anatomy/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/anatomy/True_True.json"
+      }
+    },
+    "astronomy": {
+      "True_False": {
+        "sample_count": 13,
+        "file_path": "mmlu_validation/astronomy/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/astronomy/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/astronomy/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/astronomy/True_True.json"
+      }
+    },
+    "business_ethics": {
+      "True_False": {
+        "sample_count": 7,
+        "file_path": "mmlu_validation/business_ethics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_validation/business_ethics/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/business_ethics/True_True.json"
+      }
+    },
+    "clinical_knowledge": {
+      "True_True": {
+        "sample_count": 5,
+        "file_path": "mmlu_validation/clinical_knowledge/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 22,
+        "file_path": "mmlu_validation/clinical_knowledge/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/clinical_knowledge/False_True.json"
+      }
+    },
+    "college_biology": {
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/college_biology/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 14,
+        "file_path": "mmlu_validation/college_biology/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/college_biology/False_False.json"
+      }
+    },
+    "college_chemistry": {
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_validation/college_chemistry/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_validation/college_chemistry/False_False.json"
+      }
+    },
+    "college_computer_science": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "mmlu_validation/college_computer_science/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/college_computer_science/False_False.json"
+      }
+    },
+    "college_mathematics": {
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_validation/college_mathematics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 8,
+        "file_path": "mmlu_validation/college_mathematics/True_False.json"
+      }
+    },
+    "college_medicine": {
+      "True_False": {
+        "sample_count": 20,
+        "file_path": "mmlu_validation/college_medicine/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/college_medicine/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/college_medicine/False_False.json"
+      }
+    },
+    "college_physics": {
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "mmlu_validation/college_physics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/college_physics/False_False.json"
+      }
+    },
+    "computer_security": {
+      "True_False": {
+        "sample_count": 8,
+        "file_path": "mmlu_validation/computer_security/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/computer_security/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/computer_security/False_False.json"
+      }
+    },
+    "conceptual_physics": {
+      "True_False": {
+        "sample_count": 23,
+        "file_path": "mmlu_validation/conceptual_physics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/conceptual_physics/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/conceptual_physics/False_False.json"
+      }
+    },
+    "econometrics": {
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_validation/econometrics/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 8,
+        "file_path": "mmlu_validation/econometrics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/econometrics/True_True.json"
+      }
+    },
+    "electrical_engineering": {
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/electrical_engineering/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 12,
+        "file_path": "mmlu_validation/electrical_engineering/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/electrical_engineering/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/electrical_engineering/False_True.json"
+      }
+    },
+    "elementary_mathematics": {
+      "True_False": {
+        "sample_count": 34,
+        "file_path": "mmlu_validation/elementary_mathematics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 7,
+        "file_path": "mmlu_validation/elementary_mathematics/True_True.json"
+      }
+    },
+    "formal_logic": {
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/formal_logic/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 5,
+        "file_path": "mmlu_validation/formal_logic/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 7,
+        "file_path": "mmlu_validation/formal_logic/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/formal_logic/False_True.json"
+      }
+    },
+    "global_facts": {
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/global_facts/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 6,
+        "file_path": "mmlu_validation/global_facts/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/global_facts/False_False.json"
+      }
+    },
+    "high_school_biology": {
+      "True_False": {
+        "sample_count": 27,
+        "file_path": "mmlu_validation/high_school_biology/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_validation/high_school_biology/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/high_school_biology/True_True.json"
+      }
+    },
+    "high_school_chemistry": {
+      "True_False": {
+        "sample_count": 19,
+        "file_path": "mmlu_validation/high_school_chemistry/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_validation/high_school_chemistry/False_False.json"
+      }
+    },
+    "high_school_computer_science": {
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "mmlu_validation/high_school_computer_science/True_False.json"
+      }
+    },
+    "high_school_european_history": {
+      "True_False": {
+        "sample_count": 15,
+        "file_path": "mmlu_validation/high_school_european_history/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/high_school_european_history/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/high_school_european_history/False_True.json"
+      }
+    },
+    "high_school_geography": {
+      "True_False": {
+        "sample_count": 19,
+        "file_path": "mmlu_validation/high_school_geography/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/high_school_geography/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/high_school_geography/False_False.json"
+      }
+    },
+    "high_school_government_and_politics": {
+      "True_False": {
+        "sample_count": 20,
+        "file_path": "mmlu_validation/high_school_government_and_politics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/high_school_government_and_politics/True_True.json"
+      }
+    },
+    "high_school_macroeconomics": {
+      "True_False": {
+        "sample_count": 39,
+        "file_path": "mmlu_validation/high_school_macroeconomics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_validation/high_school_macroeconomics/True_True.json"
+      }
+    },
+    "high_school_mathematics": {
+      "True_False": {
+        "sample_count": 19,
+        "file_path": "mmlu_validation/high_school_mathematics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 7,
+        "file_path": "mmlu_validation/high_school_mathematics/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_validation/high_school_mathematics/True_True.json"
+      }
+    },
+    "high_school_microeconomics": {
+      "True_False": {
+        "sample_count": 25,
+        "file_path": "mmlu_validation/high_school_microeconomics/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/high_school_microeconomics/True_True.json"
+      }
+    },
+    "high_school_physics": {
+      "True_False": {
+        "sample_count": 15,
+        "file_path": "mmlu_validation/high_school_physics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/high_school_physics/False_False.json"
+      }
+    },
+    "high_school_psychology": {
+      "True_False": {
+        "sample_count": 57,
+        "file_path": "mmlu_validation/high_school_psychology/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_validation/high_school_psychology/True_True.json"
+      }
+    },
+    "high_school_statistics": {
+      "True_False": {
+        "sample_count": 21,
+        "file_path": "mmlu_validation/high_school_statistics/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/high_school_statistics/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/high_school_statistics/True_True.json"
+      }
+    },
+    "high_school_us_history": {
+      "True_False": {
+        "sample_count": 18,
+        "file_path": "mmlu_validation/high_school_us_history/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/high_school_us_history/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/high_school_us_history/False_False.json"
+      }
+    },
+    "high_school_world_history": {
+      "True_False": {
+        "sample_count": 23,
+        "file_path": "mmlu_validation/high_school_world_history/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_validation/high_school_world_history/False_False.json"
+      }
+    },
+    "human_aging": {
+      "True_False": {
+        "sample_count": 21,
+        "file_path": "mmlu_validation/human_aging/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/human_aging/False_False.json"
+      }
+    },
+    "human_sexuality": {
+      "True_False": {
+        "sample_count": 11,
+        "file_path": "mmlu_validation/human_sexuality/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/human_sexuality/False_True.json"
+      }
+    },
+    "international_law": {
+      "True_False": {
+        "sample_count": 12,
+        "file_path": "mmlu_validation/international_law/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/international_law/False_False.json"
+      }
+    },
+    "jurisprudence": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "mmlu_validation/jurisprudence/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/jurisprudence/False_True.json"
+      }
+    },
+    "logical_fallacies": {
+      "True_False": {
+        "sample_count": 17,
+        "file_path": "mmlu_validation/logical_fallacies/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/logical_fallacies/True_True.json"
+      }
+    },
+    "machine_learning": {
+      "True_False": {
+        "sample_count": 11,
+        "file_path": "mmlu_validation/machine_learning/True_False.json"
+      }
+    },
+    "management": {
+      "True_False": {
+        "sample_count": 9,
+        "file_path": "mmlu_validation/management/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/management/True_True.json"
+      }
+    },
+    "marketing": {
+      "True_False": {
+        "sample_count": 24,
+        "file_path": "mmlu_validation/marketing/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/marketing/True_True.json"
+      }
+    },
+    "medical_genetics": {
+      "True_False": {
+        "sample_count": 11,
+        "file_path": "mmlu_validation/medical_genetics/True_False.json"
+      }
+    },
+    "miscellaneous": {
+      "True_False": {
+        "sample_count": 72,
+        "file_path": "mmlu_validation/miscellaneous/True_False.json"
+      },
+      "False_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_validation/miscellaneous/False_True.json"
+      },
+      "True_True": {
+        "sample_count": 7,
+        "file_path": "mmlu_validation/miscellaneous/True_True.json"
+      },
+      "False_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_validation/miscellaneous/False_False.json"
+      }
+    },
+    "moral_disputes": {
+      "True_False": {
+        "sample_count": 30,
+        "file_path": "mmlu_validation/moral_disputes/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 7,
+        "file_path": "mmlu_validation/moral_disputes/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/moral_disputes/True_True.json"
+      }
+    },
+    "moral_scenarios": {
+      "True_False": {
+        "sample_count": 94,
+        "file_path": "mmlu_validation/moral_scenarios/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 6,
+        "file_path": "mmlu_validation/moral_scenarios/False_False.json"
+      }
+    },
+    "nutrition": {
+      "True_True": {
+        "sample_count": 3,
+        "file_path": "mmlu_validation/nutrition/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 27,
+        "file_path": "mmlu_validation/nutrition/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_validation/nutrition/False_False.json"
+      }
+    },
+    "philosophy": {
+      "True_False": {
+        "sample_count": 29,
+        "file_path": "mmlu_validation/philosophy/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 4,
+        "file_path": "mmlu_validation/philosophy/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/philosophy/False_True.json"
+      }
+    },
+    "prehistory": {
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/prehistory/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 31,
+        "file_path": "mmlu_validation/prehistory/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/prehistory/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/prehistory/False_True.json"
+      }
+    },
+    "professional_accounting": {
+      "False_False": {
+        "sample_count": 11,
+        "file_path": "mmlu_validation/professional_accounting/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/professional_accounting/True_True.json"
+      },
+      "True_False": {
+        "sample_count": 19,
+        "file_path": "mmlu_validation/professional_accounting/True_False.json"
+      }
+    },
+    "professional_law": {
+      "True_False": {
+        "sample_count": 99,
+        "file_path": "mmlu_validation/professional_law/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 67,
+        "file_path": "mmlu_validation/professional_law/False_False.json"
+      },
+      "False_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_validation/professional_law/False_True.json"
+      }
+    },
+    "professional_medicine": {
+      "True_False": {
+        "sample_count": 28,
+        "file_path": "mmlu_validation/professional_medicine/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/professional_medicine/False_False.json"
+      },
+      "True_True": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/professional_medicine/True_True.json"
+      }
+    },
+    "professional_psychology": {
+      "True_False": {
+        "sample_count": 56,
+        "file_path": "mmlu_validation/professional_psychology/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 5,
+        "file_path": "mmlu_validation/professional_psychology/True_True.json"
+      },
+      "False_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/professional_psychology/False_True.json"
+      },
+      "False_False": {
+        "sample_count": 7,
+        "file_path": "mmlu_validation/professional_psychology/False_False.json"
+      }
+    },
+    "public_relations": {
+      "True_False": {
+        "sample_count": 11,
+        "file_path": "mmlu_validation/public_relations/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/public_relations/False_False.json"
+      }
+    },
+    "security_studies": {
+      "True_False": {
+        "sample_count": 24,
+        "file_path": "mmlu_validation/security_studies/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 3,
+        "file_path": "mmlu_validation/security_studies/False_False.json"
+      }
+    },
+    "sociology": {
+      "True_False": {
+        "sample_count": 21,
+        "file_path": "mmlu_validation/sociology/True_False.json"
+      },
+      "False_False": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/sociology/False_False.json"
+      }
+    },
+    "us_foreign_policy": {
+      "True_False": {
+        "sample_count": 10,
+        "file_path": "mmlu_validation/us_foreign_policy/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 1,
+        "file_path": "mmlu_validation/us_foreign_policy/True_True.json"
+      }
+    },
+    "virology": {
+      "False_False": {
+        "sample_count": 2,
+        "file_path": "mmlu_validation/virology/False_False.json"
+      },
+      "True_False": {
+        "sample_count": 16,
+        "file_path": "mmlu_validation/virology/True_False.json"
+      }
+    },
+    "world_religions": {
+      "True_False": {
+        "sample_count": 15,
+        "file_path": "mmlu_validation/world_religions/True_False.json"
+      },
+      "True_True": {
+        "sample_count": 4,
+        "file_path": "mmlu_validation/world_religions/True_True.json"
+      }
+    }
+  }
+}
