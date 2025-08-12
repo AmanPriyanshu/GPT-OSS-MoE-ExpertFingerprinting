@@ -1,0 +1,1536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT-OSS MoE Expert Layer Comparison</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container { max-width: 1800px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+
+        .home-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .home-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .credits {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .credits strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .credit-link {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+        
+        .header h1 { 
+            font-size: 2.5rem; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .selection-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .selector {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .selector h3 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .selector.config-a h3 { border-bottom-color: #3498db; }
+        .selector.config-b h3 { border-bottom-color: #e74c3c; }
+
+        .config-badge {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .config-a .config-badge { background: #3498db; }
+        .config-b .config-badge { background: #e74c3c; }
+
+        .control-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .control-group h4 { 
+            margin-bottom: 8px; 
+            color: #555;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        select { 
+            padding: 10px; 
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: 100%;
+            background: white;
+            font-size: 0.9rem;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .compare-btn {
+            grid-column: 1 / -1;
+            padding: 18px;
+            background: linear-gradient(45deg, #3498db, #e74c3c);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .compare-btn:disabled { 
+            opacity: 0.5; 
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .compare-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .results {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            display: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            border: 1px solid #dee2e6;
+        }
+
+        .config-summary {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 20px;
+        }
+
+        .config-info {
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .config-info.a { background: linear-gradient(45deg, #3498db, #2980b9); }
+        .config-info.b { background: linear-gradient(45deg, #e74c3c, #c0392b); }
+
+        .analysis-selector {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .analysis-btn {
+            padding: 12px 25px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .analysis-btn.active {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .analysis-btn:hover:not(.active) {
+            border-color: #667eea;
+            background: #f8f9fa;
+        }
+
+        .layer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .layer-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .layer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .layer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .layer-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .layer-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 0.8rem;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-weight: 600;
+        }
+
+        .stat-item.positive { color: #28a745; }
+        .stat-item.negative { color: #dc3545; }
+        .stat-item.neutral { color: #6c757d; }
+
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            height: 300px;
+        }
+
+        .chart-canvas {
+            height: 250px !important;
+        }
+
+        .top-diffs {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .top-diffs h4 {
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .diff-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .diff-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid;
+            font-size: 0.9rem;
+        }
+
+        .diff-item.positive { border-left-color: #28a745; }
+        .diff-item.negative { border-left-color: #dc3545; }
+
+        .expert-id {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .diff-value {
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .diff-value.positive { color: #28a745; }
+        .diff-value.negative { color: #dc3545; }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #666;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .overall-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .overall-stat {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .overall-stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .overall-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 10px; }
+            
+            .header-nav {
+                flex-direction: column;
+                gap: 12px;
+                padding: 0 15px;
+                margin-bottom: 15px;
+            }
+
+            .home-btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+                align-self: flex-start;
+            }
+
+            .credits {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+                text-align: center;
+            }
+
+            .citation-section {
+                margin-top: 30px;
+                padding: 20px 15px;
+            }
+
+            .citation-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .citation-header p {
+                font-size: 0.9rem;
+            }
+
+            .citation-box {
+                padding: 15px;
+            }
+
+            .bibtex {
+                font-size: 0.75rem;
+                line-height: 1.3;
+            }
+
+            .copy-btn {
+                width: 100%;
+                margin-top: 0;
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+
+            .citation-footer p {
+                font-size: 0.85rem;
+            }
+
+            .hidden { display: none; }
+            
+            .selection-panel { 
+                grid-template-columns: 1fr; 
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+            
+            .selector {
+                padding: 20px 15px;
+            }
+            
+            .selector h3 {
+                font-size: 1.1rem;
+                margin-bottom: 15px;
+            }
+            
+            .control-row { 
+                grid-template-columns: 1fr; 
+                gap: 12px;
+            }
+            
+            .control-group h4 {
+                font-size: 0.85rem;
+                margin-bottom: 6px;
+            }
+            
+            select {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+            
+            label {
+                font-size: 0.85rem;
+                margin: 3px 0;
+            }
+            
+            .compare-btn {
+                padding: 16px;
+                font-size: 1rem;
+                margin-top: 12px;
+            }
+            
+            .results {
+                padding: 20px 15px;
+            }
+            
+            .comparison-header {
+                padding: 20px 15px;
+                margin-bottom: 25px;
+            }
+            
+            .comparison-header h2 {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
+            
+            .config-summary { 
+                flex-direction: column; 
+                gap: 12px; 
+                align-items: center; 
+            }
+            
+            .config-info {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                text-align: center;
+            }
+            
+            .analysis-selector { 
+                flex-wrap: wrap; 
+                gap: 10px;
+                margin-bottom: 25px;
+            }
+            
+            .analysis-btn {
+                padding: 10px 18px;
+                font-size: 0.9rem;
+                flex: 1;
+                min-width: 140px;
+            }
+            
+            .overall-stats { 
+                grid-template-columns: repeat(2, 1fr); 
+                gap: 12px;
+                margin-bottom: 25px;
+            }
+            
+            .overall-stat {
+                padding: 15px 10px;
+            }
+            
+            .overall-stat-value {
+                font-size: 1.8rem;
+                margin-bottom: 3px;
+            }
+            
+            .overall-stat-label {
+                font-size: 0.75rem;
+            }
+            
+            .layer-grid { 
+                grid-template-columns: 1fr; 
+                gap: 20px;
+            }
+            
+            .layer-card {
+                padding: 15px;
+            }
+            
+            .layer-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+                margin-bottom: 12px;
+            }
+            
+            .layer-title {
+                font-size: 1.2rem;
+            }
+            
+            .layer-stats {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 8px;
+                width: 100%;
+            }
+            
+            .stat-item {
+                padding: 4px 8px;
+                font-size: 0.75rem;
+                text-align: center;
+            }
+            
+            .chart-container {
+                height: 250px;
+                padding: 10px;
+                margin-bottom: 12px;
+            }
+            
+            .chart-canvas {
+                height: 200px !important;
+            }
+            
+            .top-diffs {
+                padding: 12px;
+            }
+            
+            .top-diffs h4 {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+            
+            .diff-list { 
+                grid-template-columns: 1fr; 
+                gap: 6px;
+            }
+            
+            .diff-item {
+                padding: 10px;
+                font-size: 0.85rem;
+            }
+            
+            .expert-id {
+                font-size: 0.85rem;
+            }
+            
+            .diff-value {
+                font-size: 0.9rem;
+            }
+            
+            .loading {
+                padding: 40px 20px;
+            }
+            
+            .loading h3 {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+            
+            .loading p {
+                font-size: 0.9rem;
+            }
+            
+            .spinner {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            
+            .header p {
+                font-size: 0.9rem;
+            }
+            
+            .selector {
+                padding: 15px 12px;
+            }
+            
+            .compare-btn {
+                padding: 14px;
+                font-size: 0.95rem;
+            }
+            
+            .results {
+                padding: 15px 12px;
+            }
+            
+            .comparison-header {
+                padding: 15px 12px;
+            }
+            
+            .config-info {
+                padding: 10px 15px;
+                font-size: 0.85rem;
+            }
+            
+            .analysis-btn {
+                padding: 8px 14px;
+                font-size: 0.85rem;
+                min-width: 120px;
+            }
+            
+            .overall-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            
+            .overall-stat {
+                padding: 12px 8px;
+            }
+            
+            .overall-stat-value {
+                font-size: 1.5rem;
+            }
+            
+            .overall-stat-label {
+                font-size: 0.7rem;
+            }
+            
+            .layer-card {
+                padding: 12px;
+            }
+            
+            .layer-title {
+                font-size: 1.1rem;
+            }
+            
+            .layer-stats {
+                gap: 6px;
+            }
+            
+            .stat-item {
+                padding: 3px 6px;
+                font-size: 0.7rem;
+            }
+            
+            .chart-container {
+                height: 220px;
+                padding: 8px;
+            }
+            
+            .chart-canvas {
+                height: 180px !important;
+            }
+            
+            .diff-item {
+                padding: 8px;
+                font-size: 0.8rem;
+            }
+        }
+
+        .citation-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            border: 2px solid #dee2e6;
+        }
+
+        .citation-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .citation-header h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .citation-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .citation-box {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .bibtex {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin: 0 0 15px 0;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #333;
+            background: transparent;
+        }
+
+        .copy-btn {
+            width: 100%;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+
+        .citation-footer {
+            text-align: center;
+        }
+
+        .citation-footer p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .citation-footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .citation-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-nav">
+                <button class="home-btn" onclick="window.location.href='index.html'">
+                    🏠 Home
+                </button>
+                <div class="credits">
+                    <span>Created by <a href="https://www.linkedin.com/in/aman-priyanshu/" target="_blank" class="credit-link"><strong>Aman Priyanshu</strong></a> & <a href="https://www.linkedin.com/in/supriti-vijay/" target="_blank" class="credit-link"><strong>Supriti Vijay</strong></a></span>
+                </div>
+            </div>
+            <h1>🔍 Expert Layer Comparison</h1>
+            <p>Deep layer-by-layer analysis of MoE expert activation patterns</p>
+        </div>
+
+        <div class="selection-panel">
+            <div class="selector config-a">
+                <h3><span class="config-badge"></span> Configuration A</h3>
+                <div class="control-row">
+                    <div class="control-group">
+                        <h4>Dataset</h4>
+                        <select id="datasetA">
+                            <option value="">Select dataset...</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <h4>Category</h4>
+                        <div id="categoriesA">Select dataset first</div>
+                    </div>
+                    <div class="control-group">
+                        <h4>Filter</h4>
+                        <div class="radio-group">
+                            <label><input type="radio" name="filterA" value="all" checked> All</label>
+                            <label><input type="radio" name="filterA" value="completed"> Completed</label>
+                            <label><input type="radio" name="filterA" value="incomplete"> Incomplete</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="selector config-b">
+                <h3><span class="config-badge"></span> Configuration B</h3>
+                <div class="control-row">
+                    <div class="control-group">
+                        <h4>Dataset</h4>
+                        <select id="datasetB">
+                            <option value="">Select dataset...</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <h4>Category</h4>
+                        <div id="categoriesB">Select dataset first</div>
+                    </div>
+                    <div class="control-group">
+                        <h4>Filter</h4>
+                        <div class="radio-group">
+                            <label><input type="radio" name="filterB" value="all" checked> All</label>
+                            <label><input type="radio" name="filterB" value="completed"> Completed</label>
+                            <label><input type="radio" name="filterB" value="incomplete"> Incomplete</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="compare-btn" id="compareBtn" disabled>🚀 Compare Configurations</button>
+        </div>
+
+        <div class="results" id="results"></div>
+        
+        <!-- Always visible citation section -->
+        <div class="citation-section">
+            <div class="citation-header">
+                <h3>📚 Citation</h3>
+                <p>If you use this tool or dataset in your research, please cite:</p>
+            </div>
+            <div class="citation-box">
+                <pre class="bibtex">@misc{priyanshu2024gptoss,
+  title={GPT-OSS MoE Expert Fingerprinting: Analyzing Expert Activation Patterns in Mixture of Experts Models},
+  author={Priyanshu, Aman and Vijay, Supriti},
+  year={2024},
+  howpublished={\\url{https://amanpriyanshu.github.io/GPT-OSS-MoE-ExpertFingerprinting/}},
+  note={Interactive analysis tool for expert activation patterns in MoE architectures}
+}</pre>
+                <button class="copy-btn" onclick="copyBibtex()">📋 Copy BibTeX</button>
+            </div>
+            <div class="citation-footer">
+                <p>Visit our <a href="https://amanpriyanshu.github.io/GPT-OSS-MoE-ExpertFingerprinting/" target="_blank">project page</a> for more details.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const BASE_URL = 'https://amanpriyanshu.github.io/GPT-OSS-MoE-ExpertFingerprinting/data';
+        let mapData = {};
+        let charts = [];
+        let currentAnalysis = 'think';
+
+        // Initialize
+        async function init() {
+            try {
+                const response = await fetch(`${BASE_URL}/map.json`);
+                mapData = await response.json();
+                
+                const selectA = document.getElementById('datasetA');
+                const selectB = document.getElementById('datasetB');
+                
+                Object.keys(mapData).forEach(dataset => {
+                    const optionA = document.createElement('option');
+                    optionA.value = dataset;
+                    optionA.textContent = dataset.replace(/_/g, ' ');
+                    selectA.appendChild(optionA);
+
+                    const optionB = document.createElement('option');
+                    optionB.value = dataset;
+                    optionB.textContent = dataset.replace(/_/g, ' ');
+                    selectB.appendChild(optionB);
+                });
+            } catch (error) {
+                console.error('Failed to load data:', error);
+            }
+        }
+
+        // Setup category updates
+        function setupCategoryUpdates(datasetId, categoriesId, config) {
+            document.getElementById(datasetId).addEventListener('change', function() {
+                const categories = document.getElementById(categoriesId);
+                const dataset = this.value;
+                
+                if (!dataset) {
+                    categories.innerHTML = 'Select dataset first';
+                    updateButton();
+                    return;
+                }
+
+                categories.innerHTML = '';
+                Object.keys(mapData[dataset]).forEach((category, i) => {
+                    const label = document.createElement('label');
+                    const input = document.createElement('input');
+                    input.type = 'radio';
+                    input.name = `category${config}`;
+                    input.value = category;
+                    
+                    label.appendChild(input);
+                    label.appendChild(document.createTextNode(' ' + category));
+                    categories.appendChild(label);
+                });
+
+                categories.addEventListener('change', updateButton);
+                updateButton();
+            });
+        }
+
+        setupCategoryUpdates('datasetA', 'categoriesA', 'A');
+        setupCategoryUpdates('datasetB', 'categoriesB', 'B');
+
+        function updateButton() {
+            const datasetA = document.getElementById('datasetA').value;
+            const datasetB = document.getElementById('datasetB').value;
+            const categoryA = document.querySelector('input[name="categoryA"]:checked');
+            const categoryB = document.querySelector('input[name="categoryB"]:checked');
+            
+            document.getElementById('compareBtn').disabled = !datasetA || !datasetB || !categoryA || !categoryB;
+        }
+
+        // Main comparison function
+        async function compare() {
+            const datasetA = document.getElementById('datasetA').value;
+            const datasetB = document.getElementById('datasetB').value;
+            const categoryA = document.querySelector('input[name="categoryA"]:checked')?.value;
+            const categoryB = document.querySelector('input[name="categoryB"]:checked')?.value;
+            const filterA = document.querySelector('input[name="filterA"]:checked')?.value;
+            const filterB = document.querySelector('input[name="filterB"]:checked')?.value;
+
+            if (!datasetA || !datasetB || !categoryA || !categoryB) return;
+
+            const results = document.getElementById('results');
+            results.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <h3>Loading and analyzing configurations...</h3>
+                    <p>This may take a moment for complex datasets</p>
+                </div>
+            `;
+            results.style.display = 'block';
+
+            try {
+                // Load both configurations
+                const [dataA, dataB] = await Promise.all([
+                    loadData(datasetA, categoryA, filterA),
+                    loadData(datasetB, categoryB, filterB)
+                ]);
+
+                const totalSamplesA = dataA.reduce((sum, item) => sum + item.sample_count, 0);
+                const totalSamplesB = dataB.reduce((sum, item) => sum + item.sample_count, 0);
+
+                if (totalSamplesA === 0 || totalSamplesB === 0) {
+                    results.innerHTML = '<div class="no-data">❌ Insufficient data for comparison</div>';
+                    return;
+                }
+
+                // Store global data for analysis switching
+                window.comparisonData = {
+                    dataA, dataB, 
+                    configA: { dataset: datasetA, category: categoryA, filter: filterA, samples: totalSamplesA },
+                    configB: { dataset: datasetB, category: categoryB, filter: filterB, samples: totalSamplesB }
+                };
+
+                // Generate initial analysis
+                generateAnalysis();
+
+            } catch (error) {
+                console.error('Comparison failed:', error);
+                results.innerHTML = '<div class="no-data">❌ Comparison failed. Please try again.</div>';
+            }
+        }
+
+        function generateAnalysis() {
+            const { dataA, dataB, configA, configB } = window.comparisonData;
+            
+            // Clear old charts
+            charts.forEach(chart => chart.destroy());
+            charts = [];
+
+            const analyticsKey = currentAnalysis === 'think' ? 'think_expert_analytics' : 'answer_expert_analytics';
+            const comparison = compareAnalytics(dataA, dataB, analyticsKey);
+
+            const results = document.getElementById('results');
+            results.innerHTML = `
+                <div class="comparison-header">
+                    <h2>🔬 Layer-by-Layer Expert Comparison</h2>
+                    <div class="config-summary">
+                        <div class="config-info a">
+                            📊 ${configA.dataset}/${configA.category}/${configA.filter}<br>
+                            <small>${configA.samples.toLocaleString()} samples</small>
+                        </div>
+                        <div class="config-info b">
+                            📊 ${configB.dataset}/${configB.category}/${configB.filter}<br>
+                            <small>${configB.samples.toLocaleString()} samples</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-selector">
+                    <button class="analysis-btn ${currentAnalysis === 'think' ? 'active' : ''}" onclick="switchAnalysis('think')">
+                        🧠 Think Token Analysis
+                    </button>
+                    <button class="analysis-btn ${currentAnalysis === 'answer' ? 'active' : ''}" onclick="switchAnalysis('answer')">
+                        💭 Answer Token Analysis
+                    </button>
+                </div>
+
+                ${createOverallStats(comparison)}
+                ${createLayerComparison(comparison)}
+            `;
+
+            // Create all layer charts
+            createAllLayerCharts(comparison);
+        }
+
+        function switchAnalysis(type) {
+            currentAnalysis = type;
+            generateAnalysis();
+        }
+
+        async function loadData(dataset, category, filter) {
+            const categoryData = mapData[dataset][category];
+            const merged = { completed: [], incomplete: [] };
+
+            for (const [combo, info] of Object.entries(categoryData)) {
+                const [finished, repetition] = combo.split('_');
+                
+                if (filter === 'completed' && finished !== 'True') continue;
+                if (filter === 'incomplete' && finished !== 'False') continue;
+
+                try {
+                    const url = `${BASE_URL}/${dataset}/${encodeURIComponent(category)}/${combo}.json`;
+                    const response = await fetch(url);
+                    if (response.ok) {
+                        const data = await response.json();
+                        const group = finished === 'True' ? 'completed' : 'incomplete';
+                        merged[group].push(data);
+                    }
+                } catch (e) {
+                    console.warn('Failed to load:', combo);
+                }
+            }
+
+            // Merge each group
+            const result = [];
+            Object.entries(merged).forEach(([status, items]) => {
+                if (items.length === 0) return;
+
+                const totalSamples = items.reduce((sum, item) => sum + item.sample_count, 0);
+                const mergedItem = {
+                    sample_count: totalSamples,
+                    status: status,
+                    think_expert_analytics: mergeAnalytics(items, 'think_expert_analytics'),
+                    answer_expert_analytics: mergeAnalytics(items, 'answer_expert_analytics')
+                };
+                result.push(mergedItem);
+            });
+
+            return result;
+        }
+
+        function mergeAnalytics(items, key) {
+            const merged = {};
+            const totalSamples = items.reduce((sum, item) => sum + item.sample_count, 0);
+
+            items.forEach(item => {
+                if (!item[key]) return;
+                const weight = item.sample_count / totalSamples;
+
+                Object.entries(item[key]).forEach(([layer, experts]) => {
+                    if (!merged[layer]) merged[layer] = {};
+                    Object.entries(experts).forEach(([expert, metrics]) => {
+                        if (!merged[layer][expert]) {
+                            merged[layer][expert] = { count_frequency: 0 };
+                        }
+                        merged[layer][expert].count_frequency += metrics.count_frequency * weight;
+                    });
+                });
+            });
+
+            return merged;
+        }
+
+        function compareAnalytics(dataA, dataB, analyticsKey) {
+            const allDataA = getAllData(dataA, analyticsKey);
+            const allDataB = getAllData(dataB, analyticsKey);
+            const layerComparisons = [];
+
+            let totalAbsDiff = 0;
+            let totalLayers = 0;
+            let maxDiff = 0;
+            let significantDiffs = 0;
+
+            // Compare each layer
+            for (let i = 0; i < 24; i++) {
+                const layerKey = `layer_${i}`;
+                const expertsA = allDataA[layerKey] || {};
+                const expertsB = allDataB[layerKey] || {};
+                
+                // Get all unique experts in this layer
+                const allExperts = new Set([...Object.keys(expertsA), ...Object.keys(expertsB)]);
+                
+                if (allExperts.size > 0) {
+                    totalLayers++;
+                    const expertDiffs = [];
+                    let layerAbsDiff = 0;
+                    
+                    allExperts.forEach(expert => {
+                        const valueA = expertsA[expert] || 0;
+                        const valueB = expertsB[expert] || 0;
+                        const diff = valueB - valueA;
+                        const absDiff = Math.abs(diff);
+                        
+                        expertDiffs.push({
+                            expert: parseInt(expert),
+                            valueA,
+                            valueB,
+                            difference: diff,
+                            absDifference: absDiff
+                        });
+                        
+                        layerAbsDiff += absDiff;
+                        maxDiff = Math.max(maxDiff, absDiff);
+                        
+                        if (absDiff > 0.01) significantDiffs++;
+                    });
+                    
+                    // Sort by absolute difference and get top 4
+                    const top4Diffs = expertDiffs
+                        .sort((a, b) => b.absDifference - a.absDifference)
+                        .slice(0, 4);
+                    
+                    layerComparisons.push({
+                        layer: i,
+                        expertsA,
+                        expertsB,
+                        expertDiffs,
+                        top4Diffs,
+                        avgAbsDiff: layerAbsDiff / allExperts.size,
+                        maxAbsDiff: Math.max(...expertDiffs.map(e => e.absDifference)),
+                        expertCount: allExperts.size
+                    });
+                    
+                    totalAbsDiff += layerAbsDiff / allExperts.size;
+                }
+            }
+
+            return {
+                layerComparisons,
+                overallStats: {
+                    totalLayers,
+                    avgAbsDiff: totalLayers > 0 ? totalAbsDiff / totalLayers : 0,
+                    maxDiff,
+                    significantDiffs
+                }
+            };
+        }
+
+        function getAllData(data, analyticsKey) {
+            const allData = {};
+
+            for (let i = 0; i < 24; i++) {
+                const layerKey = `layer_${i}`;
+                const experts = {};
+
+                data.forEach(item => {
+                    if (item[analyticsKey] && item[analyticsKey][layerKey]) {
+                        const weight = item.sample_count;
+                        Object.entries(item[analyticsKey][layerKey]).forEach(([expert, metrics]) => {
+                            if (!experts[expert]) {
+                                experts[expert] = { totalValue: 0, totalWeight: 0 };
+                            }
+                            experts[expert].totalValue += metrics.count_frequency * weight;
+                            experts[expert].totalWeight += weight;
+                        });
+                    }
+                });
+
+                // Convert to normalized values
+                Object.keys(experts).forEach(expert => {
+                    const data = experts[expert];
+                    experts[expert] = data.totalValue / data.totalWeight;
+                });
+
+                if (Object.keys(experts).length > 0) {
+                    allData[layerKey] = experts;
+                }
+            }
+
+            return allData;
+        }
+
+        function createOverallStats(comparison) {
+            const { overallStats } = comparison;
+            
+            return `
+                <div class="overall-stats">
+                    <div class="overall-stat">
+                        <div class="overall-stat-value">${overallStats.totalLayers}</div>
+                        <div class="overall-stat-label">Layers Analyzed</div>
+                    </div>
+                    <div class="overall-stat">
+                        <div class="overall-stat-value">${overallStats.avgAbsDiff.toFixed(3)}</div>
+                        <div class="overall-stat-label">Avg Difference</div>
+                    </div>
+                    <div class="overall-stat">
+                        <div class="overall-stat-value">${overallStats.maxDiff.toFixed(3)}</div>
+                        <div class="overall-stat-label">Max Difference</div>
+                    </div>
+                    <div class="overall-stat">
+                        <div class="overall-stat-value">${overallStats.significantDiffs}</div>
+                        <div class="overall-stat-label">Significant Diffs</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function copyBibtex() {
+            const bibtex = `@misc{priyanshu2024gptoss,
+  title={GPT-OSS MoE Expert Fingerprinting: Analyzing Expert Activation Patterns in Mixture of Experts Models},
+  author={Priyanshu, Aman and Vijay, Supriti},
+  year={2024},
+  howpublished={\\url{https://amanpriyanshu.github.io/GPT-OSS-MoE-ExpertFingerprinting/}},
+  note={Interactive analysis tool for expert activation patterns in MoE architectures}
+}`;
+            
+            navigator.clipboard.writeText(bibtex).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const originalText = btn.textContent;
+                btn.textContent = '✅ Copied!';
+                btn.style.background = '#28a745';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '#667eea';
+                }, 2000);
+            }).catch(() => {
+                alert('Please copy the citation manually');
+            });
+        }
+
+        function createLayerComparison(comparison) {
+            const { layerComparisons } = comparison;
+            
+            const layerCards = layerComparisons.map(layer => {
+                const avgDiffClass = layer.avgAbsDiff > 0.05 ? 'negative' : layer.avgAbsDiff > 0.01 ? 'positive' : 'neutral';
+                const maxDiffClass = layer.maxAbsDiff > 0.1 ? 'negative' : layer.maxAbsDiff > 0.05 ? 'positive' : 'neutral';
+                
+                const top4HTML = layer.top4Diffs.map(diff => {
+                    const diffClass = diff.difference >= 0 ? 'positive' : 'negative';
+                    const sign = diff.difference >= 0 ? '+' : '';
+                    
+                    return `
+                        <div class="diff-item ${diffClass}">
+                            <span class="expert-id">Expert ${diff.expert}</span>
+                            <span class="diff-value ${diffClass}">${sign}${diff.difference.toFixed(4)}</span>
+                        </div>
+                    `;
+                }).join('');
+                
+                return `
+                    <div class="layer-card">
+                        <div class="layer-header">
+                            <div class="layer-title">Layer ${layer.layer}</div>
+                            <div class="layer-stats">
+                                <span class="stat-item ${avgDiffClass}">Avg: ${layer.avgAbsDiff.toFixed(3)}</span>
+                                <span class="stat-item ${maxDiffClass}">Max: ${layer.maxAbsDiff.toFixed(3)}</span>
+                                <span class="stat-item neutral">${layer.expertCount} experts</span>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="layer_${layer.layer}_chart" class="chart-canvas"></canvas>
+                        </div>
+                        <div class="top-diffs">
+                            <h4>🏆 Top 4 Expert Differences</h4>
+                            <div class="diff-list">
+                                ${top4HTML}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            return `
+                <div class="layer-grid">
+                    ${layerCards}
+                </div>
+            `;
+        }
+
+        function createAllLayerCharts(comparison) {
+            const { layerComparisons } = comparison;
+            
+            layerComparisons.forEach(layer => {
+                setTimeout(() => {
+                    createLayerChart(layer);
+                }, 50 * layer.layer); // Stagger chart creation
+            });
+        }
+
+        function createLayerChart(layerData) {
+            const canvas = document.getElementById(`layer_${layerData.layer}_chart`);
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            
+            // Get all unique experts and sort them
+            const allExperts = new Set([
+                ...Object.keys(layerData.expertsA || {}), 
+                ...Object.keys(layerData.expertsB || {})
+            ]);
+            const expertArray = Array.from(allExperts).map(e => parseInt(e)).sort((a, b) => a - b);
+            
+            if (expertArray.length === 0) {
+                canvas.style.display = 'none';
+                return;
+            }
+
+            // Prepare data
+            const dataA = expertArray.map(expert => layerData.expertsA[expert] || 0);
+            const dataB = expertArray.map(expert => layerData.expertsB[expert] || 0);
+            
+            // Create colors for top 4 different experts
+            const top4Experts = new Set(layerData.top4Diffs.map(d => d.expert));
+            const backgroundColors = expertArray.map(expert => {
+                if (top4Experts.has(expert)) {
+                    return expert % 2 === 0 ? 'rgba(255, 193, 7, 0.8)' : 'rgba(255, 87, 34, 0.8)'; // Highlight top 4
+                }
+                return 'rgba(108, 117, 125, 0.6)'; // Regular experts
+            });
+
+            const chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: expertArray.map(e => `E${e}`),
+                    datasets: [
+                        {
+                            label: 'Configuration A',
+                            data: dataA,
+                            backgroundColor: 'rgba(52, 152, 219, 0.7)',
+                            borderColor: 'rgba(52, 152, 219, 1)',
+                            borderWidth: 1,
+                            barPercentage: 0.8,
+                            categoryPercentage: 0.9
+                        },
+                        {
+                            label: 'Configuration B',
+                            data: dataB,
+                            backgroundColor: 'rgba(231, 76, 60, 0.7)',
+                            borderColor: 'rgba(231, 76, 60, 1)',
+                            borderWidth: 1,
+                            barPercentage: 0.8,
+                            categoryPercentage: 0.9
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                boxWidth: 12,
+                                font: { size: 11 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(context) {
+                                    const expert = expertArray[context[0].dataIndex];
+                                    const isTop4 = top4Experts.has(expert);
+                                    return `Expert ${expert}${isTop4 ? ' ⭐' : ''}`;
+                                },
+                                label: function(context) {
+                                    const value = context.parsed.y.toFixed(4);
+                                    return `${context.dataset.label}: ${value}`;
+                                },
+                                afterBody: function(context) {
+                                    if (context.length === 2) {
+                                        const diff = context[1].parsed.y - context[0].parsed.y;
+                                        const sign = diff >= 0 ? '+' : '';
+                                        const expert = expertArray[context[0].dataIndex];
+                                        const rank = layerData.top4Diffs.findIndex(d => d.expert === expert) + 1;
+                                        let footer = `Difference: ${sign}${diff.toFixed(4)}`;
+                                        if (rank > 0) footer += ` (Rank #${rank})`;
+                                        return footer;
+                                    }
+                                    return '';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Expert ID',
+                                font: { size: 11 }
+                            },
+                            ticks: {
+                                maxRotation: 45,
+                                minRotation: 0,
+                                font: { size: 10 }
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Activation Frequency',
+                                font: { size: 11 }
+                            },
+                            beginAtZero: true,
+                            ticks: {
+                                font: { size: 10 }
+                            }
+                        }
+                    }
+                }
+            });
+
+            charts.push(chart);
+        }
+
+        // Event listeners
+        document.getElementById('compareBtn').addEventListener('click', compare);
+        
+        // Filter change listeners
+        document.querySelectorAll('input[name="filterA"], input[name="filterB"]').forEach(input => {
+            input.addEventListener('change', updateButton);
+        });
+
+        // Make functions globally available
+        window.switchAnalysis = switchAnalysis;
+        window.copyBibtex = copyBibtex;
+
+        // Initialize on page load
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>

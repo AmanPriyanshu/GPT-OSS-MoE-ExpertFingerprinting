@@ -22,8 +22,73 @@
             color: white;
             margin-bottom: 30px;
         }
+
+        .header-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 20px;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: white;
+        }
+
+        .credits {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .credits strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .credit-link {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .credit-link:hover {
+            color: #e3f2fd;
+            border-bottom-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .credit-link:visited {
+            color: #fff;
+        }
         
-        .header h1 { font-size: 2.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .header h1 { 
+            font-size: 2.5rem; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); 
+        }
 
         .controls {
             background: white;
@@ -33,15 +98,31 @@
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
             gap: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
-        .control-group h3 { margin-bottom: 10px; }
+        .control-group h3 { 
+            margin-bottom: 10px; 
+            color: #333;
+            font-weight: 600;
+        }
         
         select, input { 
-            padding: 8px; 
+            padding: 10px; 
             margin: 5px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        select {
+            width: 100%;
+            background: white;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
         }
 
         input[type="radio"] {
@@ -55,6 +136,7 @@
             align-items: center;
             margin: 5px 0;
             cursor: pointer;
+            font-size: 0.9rem;
         }
 
         .radio-group {
@@ -64,23 +146,36 @@
 
         .analyze-btn {
             grid-column: 1 / -1;
-            padding: 15px;
+            padding: 18px;
             background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
+            border-radius: 12px;
+            font-size: 1.2rem;
             cursor: pointer;
             margin-top: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
         }
 
-        .analyze-btn:disabled { opacity: 0.5; }
+        .analyze-btn:disabled { 
+            opacity: 0.5; 
+            cursor: not-allowed;
+        }
+
+        .analyze-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
 
         .results {
             background: white;
             border-radius: 15px;
             padding: 25px;
             display: none;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
         .sample-count {
@@ -190,6 +285,13 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
         }
 
         .top4-grid {
@@ -204,6 +306,12 @@
             border-radius: 5px;
             border: 1px solid #ddd;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .layer-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .layer-title { font-weight: bold; margin-bottom: 8px; }
@@ -231,6 +339,12 @@
             padding: 15px;
             border-radius: 10px;
             height: 200px;
+            transition: all 0.3s ease;
+        }
+
+        .layer-chart:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .layer-chart canvas {
@@ -316,15 +430,231 @@
         .expert-id { font-weight: 600; }
         .expert-prob { color: #666; font-size: 0.8rem; }
 
+        .citation-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            border: 2px solid #dee2e6;
+        }
+
+        .citation-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .citation-header h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .citation-header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .citation-box {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .bibtex {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin: 0 0 15px 0;
+            padding: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #333;
+            background: transparent;
+        }
+
+        .copy-btn {
+            width: 100%;
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+
+        .citation-footer {
+            text-align: center;
+        }
+
+        .citation-footer p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .citation-footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .citation-footer a:hover {
+            text-decoration: underline;
+        }
+
         @media (max-width: 768px) {
-            .controls { grid-template-columns: 1fr; }
-            .top4-grid { grid-template-columns: 1fr; }
+            .container { padding: 0 10px; }
+            
+            .header-nav {
+                flex-direction: column;
+                gap: 12px;
+                padding: 0 15px;
+                margin-bottom: 15px;
+            }
+
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+                align-self: flex-start;
+            }
+
+            .credits {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+                text-align: center;
+            }
+
+            .header h1 { 
+                font-size: 1.8rem; 
+                margin-bottom: 5px;
+            }
+            
+            .controls { 
+                grid-template-columns: 1fr; 
+                padding: 20px 15px;
+            }
+            
+            .control-group h3 {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+            
+            select, input {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+            
+            label {
+                font-size: 0.85rem;
+                margin: 3px 0;
+            }
+            
+            .analyze-btn {
+                padding: 16px;
+                font-size: 1rem;
+                margin-top: 12px;
+            }
+            
+            .results {
+                padding: 20px 15px;
+            }
+            
+            .top4-grid { 
+                grid-template-columns: 1fr; 
+            }
+
+            .citation-section {
+                margin-top: 30px;
+                padding: 20px 15px;
+            }
+
+            .citation-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .citation-header p {
+                font-size: 0.9rem;
+            }
+
+            .citation-box {
+                padding: 15px;
+            }
+
+            .bibtex {
+                font-size: 0.75rem;
+                line-height: 1.3;
+            }
+
+            .copy-btn {
+                width: 100%;
+                margin-top: 0;
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+
+            .citation-footer p {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 1.6rem;
+            }
+            
+            .controls {
+                padding: 15px 12px;
+            }
+
+            .analyze-btn {
+                padding: 14px;
+                font-size: 0.95rem;
+            }
+            
+            .results {
+                padding: 15px 12px;
+            }
+
+            .citation-section {
+                padding: 15px 12px;
+            }
+
+            .credits {
+                font-size: 0.75rem;
+                padding: 5px 10px;
+            }
+
+            .nav-btn {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
+            <div class="header-nav">
+                <a href="comparison.html" class="nav-btn">
+                    🔍 Comparison Tool
+                </a>
+                <div class="credits">
+                    <span>Created by <a href="https://www.linkedin.com/in/aman-priyanshu/" target="_blank" class="credit-link"><strong>Aman Priyanshu</strong></a> & <a href="https://www.linkedin.com/in/supriti-vijay/" target="_blank" class="credit-link"><strong>Supriti Vijay</strong></a></span>
+                </div>
+            </div>
             <h1>GPT-OSS MoE Expert Analytics</h1>
         </div>
 
@@ -350,10 +680,31 @@
                 </div>
             </div>
 
-            <button class="analyze-btn" id="analyzeBtn" disabled>Analyze</button>
+            <button class="analyze-btn" id="analyzeBtn" disabled>🚀 Analyze</button>
         </div>
 
         <div class="results" id="results"></div>
+
+        <!-- Always visible citation section -->
+        <div class="citation-section">
+            <div class="citation-header">
+                <h3>📚 Citation</h3>
+                <p>If you use this tool or dataset in your research, please cite:</p>
+            </div>
+            <div class="citation-box">
+                <pre class="bibtex">@misc{priyanshu2024gptoss,
+  title={GPT-OSS MoE Expert Fingerprinting: Analyzing Expert Activation Patterns in Mixture of Experts Models},
+  author={Priyanshu, Aman and Vijay, Supriti},
+  year={2024},
+  howpublished={\\url{https://amanpriyanshu.github.io/GPT-OSS-MoE-ExpertFingerprinting/}},
+  note={Interactive analysis tool for expert activation patterns in MoE architectures}
+}</pre>
+                <button class="copy-btn" onclick="copyBibtex()">📋 Copy BibTeX</button>
+            </div>
+            <div class="citation-footer">
+                <p>Visit our <a href="https://amanpriyanshu.github.io/GPT-OSS-MoE-ExpertFingerprinting/" target="_blank">project page</a> for more details.</p>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -411,6 +762,29 @@
             const dataset = document.getElementById('dataset').value;
             const category = document.querySelector('input[name="category"]:checked');
             document.getElementById('analyzeBtn').disabled = !dataset || !category;
+        }
+
+        function copyBibtex() {
+            const bibtex = `@misc{priyanshu2024gptoss,
+  title={GPT-OSS MoE Expert Fingerprinting: Analyzing Expert Activation Patterns in Mixture of Experts Models},
+  author={Priyanshu, Aman and Vijay, Supriti},
+  year={2024},
+  howpublished={\\url{https://amanpriyanshu.github.io/GPT-OSS-MoE-ExpertFingerprinting/}},
+  note={Interactive analysis tool for expert activation patterns in MoE architectures}
+}`;
+            
+            navigator.clipboard.writeText(bibtex).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                const originalText = btn.textContent;
+                btn.textContent = '✅ Copied!';
+                btn.style.background = '#28a745';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '#667eea';
+                }, 2000);
+            }).catch(() => {
+                alert('Please copy the citation manually');
+            });
         }
 
         // Main analysis function
