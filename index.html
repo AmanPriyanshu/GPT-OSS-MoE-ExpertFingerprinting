@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT-OSS MoE Expert Analytics</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 { font-size: 2.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+
+        .controls {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .control-group h3 { margin-bottom: 10px; }
+        
+        select, input { 
+            padding: 8px; 
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            margin-right: 8px;
+            margin-left: 0;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .analyze-btn {
+            grid-column: 1 / -1;
+            padding: 15px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .analyze-btn:disabled { opacity: 0.5; }
+
+        .results {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            display: none;
+        }
+
+        .sample-count {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .top4-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .top4-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .download-btn {
+            padding: 8px 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .top4-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .layer-card {
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .layer-title { font-weight: bold; margin-bottom: 8px; }
+        
+        .expert-list { font-size: 0.9rem; }
+
+        .charts-section {
+            margin-bottom: 25px;
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .chart-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .layer-chart {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            height: 200px;
+        }
+
+        .layer-chart canvas {
+            width: 100% !important;
+            height: 150px !important;
+        }
+
+        @media (max-width: 768px) {
+            .controls { grid-template-columns: 1fr; }
+            .top4-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>GPT-OSS MoE Expert Analytics</h1>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <h3>Dataset</h3>
+                <select id="dataset">
+                    <option value="">Select dataset...</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <h3>Category</h3>
+                <div id="categories">Please select a dataset first</div>
+            </div>
+
+            <div class="control-group">
+                <h3>Filter</h3>
+                <div class="radio-group">
+                    <label><input type="radio" name="filter" value="all" checked> All</label>
+                    <label><input type="radio" name="filter" value="completed"> Completed Only</label>
+                    <label><input type="radio" name="filter" value="incomplete"> Incomplete Only</label>
+                </div>
+            </div>
+
+            <button class="analyze-btn" id="analyzeBtn" disabled>Analyze</button>
+        </div>
+
+        <div class="results" id="results"></div>
+    </div>
+
+    <script>
+        const BASE_URL = 'https://amanpriyanshu.github.io/GPT-OSS-MoE-ExpertFingerprinting/data';
+        let mapData = {};
+        let charts = [];
+
+        // Initialize
+        async function init() {
+            try {
+                const response = await fetch(`${BASE_URL}/map.json`);
+                mapData = await response.json();
+                
+                const select = document.getElementById('dataset');
+                Object.keys(mapData).forEach(dataset => {
+                    const option = document.createElement('option');
+                    option.value = dataset;
+                    option.textContent = dataset.replace(/_/g, ' ');
+                    select.appendChild(option);
+                });
+            } catch (error) {
+                console.error('Failed to load data:', error);
+            }
+        }
+
+        // Update categories when dataset changes
+        document.getElementById('dataset').addEventListener('change', function() {
+            const categories = document.getElementById('categories');
+            const dataset = this.value;
+            
+            if (!dataset) {
+                categories.innerHTML = 'Please select a dataset first';
+                updateButton();
+                return;
+            }
+
+            categories.innerHTML = '';
+            Object.keys(mapData[dataset]).forEach((category, i) => {
+                const label = document.createElement('label');
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.name = 'category';
+                input.value = category;
+                
+                label.appendChild(input);
+                label.appendChild(document.createTextNode(' ' + category));
+                categories.appendChild(label);
+            });
+
+            categories.addEventListener('change', updateButton);
+            updateButton();
+        });
+
+        function updateButton() {
+            const dataset = document.getElementById('dataset').value;
+            const category = document.querySelector('input[name="category"]:checked');
+            document.getElementById('analyzeBtn').disabled = !dataset || !category;
+        }
+
+        // Main analysis function
+        async function analyze() {
+            const dataset = document.getElementById('dataset').value;
+            const category = document.querySelector('input[name="category"]:checked')?.value;
+            const filter = document.querySelector('input[name="filter"]:checked')?.value;
+
+            if (!dataset || !category) return;
+
+            const results = document.getElementById('results');
+            results.innerHTML = '<div style="text-align: center; padding: 40px;">Loading...</div>';
+            results.style.display = 'block';
+
+            try {
+                // Load and merge data
+                const data = await loadData(dataset, category, filter);
+                const totalSamples = data.reduce((sum, item) => sum + item.sample_count, 0);
+
+                if (totalSamples === 0) {
+                    results.innerHTML = '<div style="text-align: center; padding: 40px;">No data found</div>';
+                    return;
+                }
+
+                // Clear old charts
+                charts.forEach(chart => chart.destroy());
+                charts = [];
+
+                // Build results HTML
+                results.innerHTML = `
+                    <div class="sample-count">
+                        Analyzing <strong>${totalSamples.toLocaleString()}</strong> samples
+                    </div>
+
+                    ${createTop4Section(data, 'think_expert_analytics', 'Think Tokens')}
+                    ${createTop4Section(data, 'answer_expert_analytics', 'Answer Tokens')}
+                    
+                    <div class="charts-section">
+                        <div class="chart-title">Think Token Expert Patterns</div>
+                        <div id="thinkCharts" class="chart-grid"></div>
+                    </div>
+
+                    <div class="charts-section">
+                        <div class="chart-title">Answer Token Expert Patterns</div>
+                        <div id="answerCharts" class="chart-grid"></div>
+                    </div>
+                `;
+
+                // Setup downloads
+                setupDownload('downloadThinkTokens', getTop4Data(data, 'think_expert_analytics'), 'think');
+                setupDownload('downloadAnswerTokens', getTop4Data(data, 'answer_expert_analytics'), 'answer');
+
+                // Create charts
+                createCharts('thinkCharts', data, 'think_expert_analytics');
+                createCharts('answerCharts', data, 'answer_expert_analytics');
+
+            } catch (error) {
+                console.error('Analysis failed:', error);
+                results.innerHTML = '<div style="text-align: center; padding: 40px; color: red;">Analysis failed</div>';
+            }
+        }
+
+        async function loadData(dataset, category, filter) {
+            const categoryData = mapData[dataset][category];
+            const merged = { completed: [], incomplete: [] };
+
+            for (const [combo, info] of Object.entries(categoryData)) {
+                const [finished, repetition] = combo.split('_');
+                
+                if (filter === 'completed' && finished !== 'True') continue;
+                if (filter === 'incomplete' && finished !== 'False') continue;
+
+                try {
+                    const url = `${BASE_URL}/${dataset}/${encodeURIComponent(category)}/${combo}.json`;
+                    const response = await fetch(url);
+                    if (response.ok) {
+                        const data = await response.json();
+                        const group = finished === 'True' ? 'completed' : 'incomplete';
+                        merged[group].push(data);
+                    }
+                } catch (e) {
+                    console.warn('Failed to load:', combo);
+                }
+            }
+
+            // Merge each group
+            const result = [];
+            Object.entries(merged).forEach(([status, items]) => {
+                if (items.length === 0) return;
+
+                const totalSamples = items.reduce((sum, item) => sum + item.sample_count, 0);
+                const mergedItem = {
+                    sample_count: totalSamples,
+                    status: status,
+                    think_expert_analytics: mergeAnalytics(items, 'think_expert_analytics'),
+                    answer_expert_analytics: mergeAnalytics(items, 'answer_expert_analytics')
+                };
+                result.push(mergedItem);
+            });
+
+            return result;
+        }
+
+        function mergeAnalytics(items, key) {
+            const merged = {};
+            const totalSamples = items.reduce((sum, item) => sum + item.sample_count, 0);
+
+            items.forEach(item => {
+                if (!item[key]) return;
+                const weight = item.sample_count / totalSamples;
+
+                Object.entries(item[key]).forEach(([layer, experts]) => {
+                    if (!merged[layer]) merged[layer] = {};
+                    Object.entries(experts).forEach(([expert, metrics]) => {
+                        if (!merged[layer][expert]) {
+                            merged[layer][expert] = { count_frequency: 0 };
+                        }
+                        merged[layer][expert].count_frequency += metrics.count_frequency * weight;
+                    });
+                });
+            });
+
+            return merged;
+        }
+
+        function createTop4Section(data, analyticsKey, title) {
+            const top4Data = getTop4Data(data, analyticsKey);
+            const hasData = Object.keys(top4Data).length > 0;
+            
+            if (!hasData) {
+                return `
+                    <div class="top4-section">
+                        <div class="top4-header">
+                            <h3>${title} - Top 4 Expert Rankings</h3>
+                        </div>
+                        <div style="text-align: center; color: #666;">No data available</div>
+                    </div>
+                `;
+            }
+
+            const layerCards = Object.entries(top4Data)
+                .map(([layer, experts]) => {
+                    const layerNum = layer.replace('layer_', '');
+                    const expertList = experts
+                        .map(e => `E${e.expert} (${e.value.toFixed(3)})`)
+                        .join(' > ');
+                    
+                    return `
+                        <div class="layer-card">
+                            <div class="layer-title">Layer ${layerNum}</div>
+                            <div class="expert-list">${expertList}</div>
+                        </div>
+                    `;
+                })
+                .join('');
+
+            return `
+                <div class="top4-section">
+                    <div class="top4-header">
+                        <h3>${title} - Top 4 Expert Rankings</h3>
+                        <button class="download-btn" id="download${title.replace(/\s+/g, '')}">Download JSON</button>
+                    </div>
+                    <div class="top4-grid">${layerCards}</div>
+                </div>
+            `;
+        }
+
+        function getTop4Data(data, analyticsKey) {
+            const layerData = {};
+
+            for (let i = 0; i < 24; i++) {
+                const layerKey = `layer_${i}`;
+                const experts = [];
+
+                data.forEach(item => {
+                    if (item[analyticsKey] && item[analyticsKey][layerKey]) {
+                        const weight = item.sample_count;
+                        Object.entries(item[analyticsKey][layerKey]).forEach(([expert, metrics]) => {
+                            const existing = experts.find(e => e.expert === expert);
+                            if (existing) {
+                                existing.totalValue += metrics.count_frequency * weight;
+                                existing.totalWeight += weight;
+                            } else {
+                                experts.push({
+                                    expert: expert,
+                                    totalValue: metrics.count_frequency * weight,
+                                    totalWeight: weight
+                                });
+                            }
+                        });
+                    }
+                });
+
+                if (experts.length > 0) {
+                    const top4 = experts
+                        .map(e => ({ expert: e.expert, value: e.totalValue / e.totalWeight }))
+                        .sort((a, b) => b.value - a.value)
+                        .slice(0, 4);
+                    
+                    if (top4.length > 0) {
+                        layerData[layerKey] = top4;
+                    }
+                }
+            }
+
+            return layerData;
+        }
+
+        function createCharts(containerId, data, analyticsKey) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            const layerData = getTop4Data(data, analyticsKey);
+            
+            Object.entries(layerData).forEach(([layerKey, experts]) => {
+                const layerNum = layerKey.replace('layer_', '');
+                
+                // Get all experts for this layer (not just top 4)
+                const allExperts = [];
+                data.forEach(item => {
+                    if (item[analyticsKey] && item[analyticsKey][layerKey]) {
+                        const weight = item.sample_count;
+                        Object.entries(item[analyticsKey][layerKey]).forEach(([expert, metrics]) => {
+                            const existing = allExperts.find(e => e.expert === expert);
+                            if (existing) {
+                                existing.totalValue += metrics.count_frequency * weight;
+                                existing.totalWeight += weight;
+                            } else {
+                                allExperts.push({
+                                    expert: expert,
+                                    totalValue: metrics.count_frequency * weight,
+                                    totalWeight: weight
+                                });
+                            }
+                        });
+                    }
+                });
+
+                const chartData = allExperts
+                    .map(e => ({ expert: parseInt(e.expert), value: e.totalValue / e.totalWeight }))
+                    .sort((a, b) => a.expert - b.expert);
+
+                if (chartData.length > 0) {
+                    const chartDiv = document.createElement('div');
+                    chartDiv.className = 'layer-chart';
+                    chartDiv.innerHTML = `
+                        <div style="font-weight: bold; text-align: center; margin-bottom: 10px;">Layer ${layerNum}</div>
+                        <canvas id="${containerId}_${layerNum}" width="800" height="150"></canvas>
+                    `;
+                    container.appendChild(chartDiv);
+
+                    setTimeout(() => {
+                        const canvas = document.getElementById(`${containerId}_${layerNum}`);
+                        if (canvas) {
+                            const colors = chartData.map(item => {
+                                const ratio = item.expert / 31;
+                                const hue = 270 - (ratio * 150);
+                                return `hsla(${hue}, 75%, 50%, 0.8)`;
+                            });
+
+                            const chart = new Chart(canvas.getContext('2d'), {
+                                type: 'bar',
+                                data: {
+                                    labels: chartData.map(item => `E${item.expert}`),
+                                    datasets: [{
+                                        data: chartData.map(item => item.value),
+                                        backgroundColor: colors,
+                                        borderColor: colors.map(c => c.replace('0.8', '1')),
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    responsive: false,
+                                    maintainAspectRatio: false,
+                                    plugins: { legend: { display: false } },
+                                    scales: {
+                                        y: { beginAtZero: true },
+                                        x: { ticks: { maxRotation: 0 } }
+                                    }
+                                }
+                            });
+                            charts.push(chart);
+                        }
+                    }, 50);
+                }
+            });
+        }
+
+        function setupDownload(buttonId, data, type) {
+            const btn = document.getElementById(buttonId);
+            if (btn) {
+                btn.onclick = () => {
+                    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `top4_${type}_${new Date().toISOString().split('T')[0]}.json`;
+                    a.click();
+                    URL.revokeObjectURL(url);
+                };
+            }
+        }
+
+        document.getElementById('analyzeBtn').addEventListener('click', analyze);
+        window.addEventListener('load', init);
+    </script>
+</body>
+</html>
